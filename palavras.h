@@ -16,6 +16,6 @@ typedef struct {
     struct Trie*filhos[26];
     int fimPalavra;
     int ID_palavra;
-} Trie;
+} Triee;
 
 #endif
