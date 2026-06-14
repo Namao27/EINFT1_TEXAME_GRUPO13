@@ -1,7 +1,0 @@
-#ifndef ARQUIVO_H
-#define ARQUIVO_H
-
-void salvarArquivo();
-void carregarArquivo();
-
-#endif
