@@ -61,3 +61,60 @@ Palavra* buscarPalavraPorID(Palavra palavras[], int numPalavras, int id) {
     }
     return NULL; // Palavra não encontrada
 }
+
+void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) {
+    char palavra[50];
+    printf("Digite a palavra que deseja consultar: ");
+    scanf("%s", palavra);
+
+    int idEncontrado;
+    pesquisarPalavra(raiz, palavra, &idEncontrado);
+
+    if (idEncontrado != -1) {
+        Palavra *palavraEncontrada = buscarPalavraPorID(palavras, numPalavras, idEncontrado);
+        if (palavraEncontrada != NULL) {
+            printf("Palavra: %s\n", palavraEncontrada->palavra);
+            printf("Significado: %s\n", palavraEncontrada->significado);
+            printf("Contexto: %s\n", palavraEncontrada->contexto);
+            printf("Categoria: %s\n", palavraEncontrada->categoria);
+            printf("Palavras Relacionadas:\n");
+            for (int i = 0; i < palavraEncontrada->numero_de_relacionadas; i++) {
+                printf("- %s\n", palavraEncontrada->relacionadas[i]);
+            }
+        } else {
+            printf("Erro ao buscar a palavra por ID.\n");
+        }
+    } else {
+        printf("Palavra não encontrada.\n");
+    }
+}
+void converterParaMaiusculas(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = str[i] - ('a' - 'A');
+        }
+    }
+}
+void converterParaMinusculas(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = str[i] + ('a' - 'A');
+        }
+   }
+}
+void liberarTrie(Trie_Palavras *raiz) {
+    if (raiz == NULL) {
+        return;
+    }
+    for (int i = 0; i < 26; i++) {
+        liberarTrie(raiz->filhos[i]);
+    }
+    free(raiz);
+}
+void liberarPalavras(Palavra *palavras, int numPalavras) {
+    free(palavras);
+}
+void liberarMemoria(Trie_Palavras *raiz, Palavra *palavras, int numPalavras) {
+    liberarTrie(raiz);
+    liberarPalavras(palavras, numPalavras);
+}
