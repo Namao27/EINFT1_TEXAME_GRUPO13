@@ -6,9 +6,8 @@
 #define MAX_PALAVRAS 1000
 
 
-    Trie_Palavras *criarNo() {
-    Trie_Palavras *novoNo;
-        (Trie_Palavras *) malloc(sizeof(Trie_Palavras));
+Trie_Palavras *criarNo() {
+   Trie_Palavras *novoNo = malloc(sizeof(Trie_Palavras));
 
     if (novoNo == NULL) {
         return NULL;
@@ -21,9 +20,30 @@
     novoNo->ID_palavra = -1;
     return novoNo;
 }
+void converterParaMaiusculas(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = str[i] - ('a' - 'A');
+        }
+    }
+}
+void converterParaMinusculas(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = str[i] + ('a' - 'A');
+        }
+   }
+} 
 
-void inserirPalavra(Trie_Palavras *raiz,char palavra[],int id)
-{
+void validarPalavra(char *palavra) {
+    for (int i = 0; palavra[i] != '\0'; i++) {
+        if (palavra[i] < 'A' || palavra[i] > 'Z') {
+            printf("Palavra inválida. Use apenas letras maiúsculas.\n");
+            exit(1);
+        }
+    }
+}
+void inserirPalavra(Trie_Palavras *raiz,char palavra[],int id){
     Trie_Palavras *atual = raiz;
     for (int i = 0; palavra[i] != '\0'; i++) {
         int indice = palavra[i] - 'A';
@@ -42,14 +62,16 @@ int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado) {
         int indice = palavra[i] - 'A';
         if (atual->filhos[indice] == NULL) {
             *idEncontrado = -1; // Palavra não encontrada
-            return;
+            return 0;
         }
         atual = atual->filhos[indice];
     }
     if (atual->fimPalavra) {
         *idEncontrado = atual->ID_palavra; // Palavra encontrada, retorna o ID
+        return 1;
     } else {
         *idEncontrado = -1; // Palavra não encontrada
+        return 0;
     }
 }
 
@@ -88,20 +110,24 @@ void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) 
         printf("Palavra não encontrada.\n");
     }
 }
-void converterParaMaiusculas(char *str) {
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 'a' && str[i] <= 'z') {
-            str[i] = str[i] - ('a' - 'A');
+void removerPalavra(Trie_Palavras *raiz, char palavra[]) {
+    Trie_Palavras *atual = raiz;
+    for (int i = 0; palavra[i] != '\0'; i++) {
+        int indice = palavra[i] - 'A';
+        if (atual->filhos[indice] == NULL) {
+            printf("Palavra não encontrada. Não é possível remover.\n");
+            return;
         }
+        atual = atual->filhos[indice];
+    }
+    if (atual->fimPalavra) {
+        atual->fimPalavra = 0; // Marca a palavra como não existente
+        printf("Palavra removida com sucesso.\n");
+    } else {
+        printf("Palavra não encontrada. Não é possível remover.\n");
     }
 }
-void converterParaMinusculas(char *str) {
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 'A' && str[i] <= 'Z') {
-            str[i] = str[i] + ('a' - 'A');
-        }
-   }
-}
+
 void liberarTrie(Trie_Palavras *raiz) {
     if (raiz == NULL) {
         return;
