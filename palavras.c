@@ -3,7 +3,6 @@
 #include <string.h>
 #include "palavras.h"
 #define PALAVRAS_H
-#define MAX_PALAVRAS 1000
 
 
 Trie_Palavras *criarNo() {
@@ -55,6 +54,45 @@ void inserirPalavra(Trie_Palavras *raiz,char palavra[],int id){
     atual->fimPalavra = 1;
     atual->ID_palavra = id;
 }
+void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalavras) {
+    char palavra[50];
+    printf("Digite a palavra que deseja atualizar: ");
+    scanf("%s", palavra);
+
+    // Garante que a busca na Trie funciona convertendo para Maiúsculas
+    char palavra_maiuscula[50];
+    strcpy(palavra_maiuscula, palavra);
+    converterParaMaiusculas(palavra_maiuscula);
+
+    int idEncontrado;
+    if (pesquisarPalavra(raiz, palavra_maiuscula, &idEncontrado) && idEncontrado != -1) {
+        // Encontra o ponteiro da struct no vetor usando o ID encontrado
+        Palavra *p = buscarPalavraPorID(palavras, numPalavras, idEncontrado);
+        
+        if (p != NULL) {
+            printf("\nPalavra encontrada: %s\n", p->palavra);
+            printf("Significado atual: %s\n", p->significado);
+            
+            // Limpar o buffer do teclado antes de ler strings longas
+            while (getchar() != '\n'); 
+
+            printf("Digite o NOVO significado: ");
+            fgets(p->significado, sizeof(p->significado), stdin);
+            p->significado[strcspn(p->significado, "\n")] = '\0'; // Remove o \n
+
+            printf("Digite o NOVO contexto: ");
+            fgets(p->contexto, sizeof(p->contexto), stdin);
+            p->contexto[strcspn(p->contexto, "\n")] = '\0';
+
+            printf("Dados atualizados com sucesso em memoria!\n");
+            printf("Nota: Lembre-se de guardar as alteracoes no arquivo antes de sair.\n");
+        } else {
+            printf("Erro interno: ID da Trie nao corresponde a nenhuma palavra no vetor.\n");
+        }
+    } else {
+        printf("Palavra nao encontrada na Trie. Impossivel atualizar.\n");
+    }
+}
 
 int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado) {
     Trie_Palavras *atual = raiz;
@@ -73,6 +111,36 @@ int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado) {
         *idEncontrado = -1; // Palavra não encontrada
         return 0;
     }
+}
+
+void listarPalavras(Trie_Palavras *raiz, char prefixo[], int nivel) {
+    if (raiz == NULL) {
+        return;
+    }
+    if (raiz->fimPalavra) {
+        prefixo[nivel] = '\0'; // Termina a string do prefixo
+        printf("%s\n", prefixo);
+    }
+    for (int i = 0; i < 26; i++) {
+        if (raiz->filhos[i] != NULL) {
+            prefixo[nivel] = 'A' + i; // Adiciona a letra ao prefixo
+            listarPalavras(raiz->filhos[i], prefixo, nivel + 1);
+        }
+    }
+}
+
+int contarPalavras(Trie_Palavras *raiz) {
+    if (raiz == NULL) {
+        return 0;
+    }
+    int contador = 0;
+    if (raiz->fimPalavra) {
+        contador++;
+    }
+    for (int i = 0; i < 26; i++) {
+        contador += contarPalavras(raiz->filhos[i]);
+    }
+    return contador;
 }
 
 Palavra* buscarPalavraPorID(Palavra palavras[], int numPalavras, int id) {
@@ -143,4 +211,90 @@ void liberarPalavras(Palavra *palavras, int numPalavras) {
 void liberarMemoria(Trie_Palavras *raiz, Palavra *palavras, int numPalavras) {
     liberarTrie(raiz);
     liberarPalavras(palavras, numPalavras);
+}
+
+void guardarPalavrasEmArquivo(Palavra palavras[], int numPalavras, const char *inseridas) {
+    FILE *arquivo = fopen(inseridas, "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        return;
+    }
+    for (int i = 0; i < numPalavras; i++) {
+        // Escreve os dados estruturados na mesma linha separados por '|'
+        fprintf(arquivo, "%d|%s|%s|%s|%s|", palavras[i].id, palavras[i].palavra, palavras[i].significado, palavras[i].contexto, palavras[i].categoria);
+        
+        // Escreve as relacionadas separadas por vírgula no final da MESMA linha
+        for (int j = 0; j < palavras[i].numero_de_relacionadas; j++) {
+            fprintf(arquivo, "%s", palavras[i].relacionadas[j]);
+            if (j < palavras[i].numero_de_relacionadas - 1) {
+                fprintf(arquivo, ",");
+            }
+        }
+        fprintf(arquivo, "\n"); // Só quebra a linha no fim de TUDO
+    }
+    fclose(arquivo);
+}
+
+int carregarPalavrasDeArquivo(Trie_Palavras *raiz, Palavra palavras[], const char *PalavrasArquivos) {
+    FILE *arquivo = fopen(PalavrasArquivos, "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo para leitura.\n");
+        return 0;
+    }
+    int numPalavras = 0;
+    char linha[1200]; 
+
+    while (fgets(linha, sizeof(linha), arquivo) != NULL && numPalavras < MAX_PALAVRAS) {
+        linha[strcspn(linha, "\n")] = '\0'; // Remove o \n do fim
+
+        Palavra p;
+        p.numero_de_relacionadas = 0;
+        char rel_brutas[500] = "";
+
+        // %d| -> Lê o ID numérico e consome o '|'
+        // %[^|]| -> Lê texto até ao '|' e depois consome o '|'
+        // %[^\0] -> Na última parte, lê tudo até ao fim da string
+        int campos_lidos = sscanf(linha, "%d|%[^|]|%[^|]|%[^|]|%[^|]|%[^\0]",&p.id,p.palavra, p.significado, p.contexto, p.categoria, rel_brutas);
+
+        // Se conseguiu ler pelo menos os 5 campos básicos essenciais
+        if (campos_lidos >= 5) {
+            
+            // --- SEPARAR AS RELACIONADAS (Sem strtok) ---
+            // Usamos um varrimento manual simples com um ciclo 'for'
+            int idx = 0;
+            int palavra_relacionadaAtual = 0; // Índice da palavra relacionada atual
+            int indece_doCaractereNaPalavra = 0; // Índice do caractere dentro da palavra relacionada
+
+            while (rel_brutas[idx] != '\0' && palavra_relacionadaAtual < 10) {
+                if (rel_brutas[idx] == ',') {
+                    p.relacionadas[palavra_relacionadaAtual][indece_doCaractereNaPalavra] = '\0'; // Termina a palavra atual
+                    palavra_relacionadaAtual++;                             // Avança para a próxima palavra
+                    indece_doCaractereNaPalavra = 0;                           // Reinicia o índice do caractere
+                } else {
+                    p.relacionadas[palavra_relacionadaAtual][indece_doCaractereNaPalavra] = rel_brutas[idx];
+                    indece_doCaractereNaPalavra++;
+                }
+                idx++;
+            }
+            if (indece_doCaractereNaPalavra > 0) { 
+                p.relacionadas[palavra_relacionadaAtual][indece_doCaractereNaPalavra] = '\0'; // Termina a última palavra relacionada
+                palavra_relacionadaAtual++;
+            }
+            p.numero_de_relacionadas = palavra_relacionadaAtual;
+
+            // Guarda a struct preenchida no teu vetor
+            palavras[numPalavras] = p;
+
+            // --- INTEGRAÇÃO COM A TRIE ---
+            char chave_trie[50];
+            strncpy(chave_trie, p.palavra, 50);
+            converterParaMaiusculas(chave_trie);
+            
+            inserirPalavra(raiz, chave_trie, p.id);
+
+            numPalavras++;
+        }
+    }
+    fclose(arquivo);
+    return numPalavras;
 }
