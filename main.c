@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "arquivo.h"
+#include "busca.h"
+#include "grafo.h"
+#include "ordenacao.h"
+#include "trie.h"
 #include "palavras.h"
+
 #define MAX_PALAVRAS 1000
 #define NOME_ARQUIVO "PalavrasArquivos.txt"
 
@@ -39,7 +45,7 @@ int main() {
 
         printf("\nOpcao: ");
         if (scanf("%d", &opcao) != 1) {
-            printf("Por favor, introduza um numero valido.\n");
+            printf("Escolha uma opcao valida.\n");
             while (getchar() != '\n'); // Limpa buffer
             opcao = -1;
             continue;
