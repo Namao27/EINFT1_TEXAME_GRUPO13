@@ -22,13 +22,13 @@ int main() {
     Palavra dicionario[MAX_PALAVRAS];
     int totalPalavras = 0;
 
-    // 2. Carregar os dados automaticamente no arranque
+
     totalPalavras = carregarPalavrasDeArquivo(raiz, dicionario, NOME_ARQUIVO);
     printf("Sistema iniciado. %d palavras carregadas de '%s'.\n", totalPalavras, NOME_ARQUIVO);
 
     int opcao;
     char buffer_palavra[50];
-    char prefixoBuffer[100]; // Usado para a listagem recursiva
+    char prefixoBuffer[100]; 
     int idAuxiliar;
 
     do {
@@ -39,32 +39,77 @@ int main() {
         printf("4. Remover Palavra\n");
         printf("5. Listar Palavras (Ordem Alfabetica)\n");
         printf("6. Sugestoes por Prefixo\n");
-        printf("7. Guardar Alteracoes (Ficheiro)\n"); // Boa prática ter uma opção explícita para salvar
+        printf("7. Guardar Alteracoes (Ficheiro)\n"); 
         printf("8. Estatisticas\n");
         printf("0. Sair\n");
 
         printf("\nOpcao: ");
         if (scanf("%d", &opcao) != 1) {
             printf("Escolha uma opcao valida.\n");
-            while (getchar() != '\n'); // Limpa buffer
+            while (getchar() != '\n');
             opcao = -1;
             continue;
         }
-        while (getchar() != '\n'); // Limpa o \n do buffer
+        while (getchar() != '\n'); 
 
         switch (opcao) {
             case 1:
-                // Exemplo de inserção manual (se quiseres implementar um formulário rápido no main)
-                printf("Funcionalidade de insercao manual pode ler novos dados para o vetor aqui.\n");
+                if (totalPalavras >= MAX_PALAVRAS) {
+                    printf("Erro: O dicionario atingiu o limite maximo de %d palavras.\n", MAX_PALAVRAS);
+                    break;
+                }
+
+                printf("\n--- INSERIR NOVA PALAVRA ---\n");
+                
+                // 1. Criar e inicializar uma nova struct Palavra
+                Palavra nova;
+                nova.id = totalPalavras + 1;
+                nova.numero_de_relacionadas = 0;
+                printf("Palavra: ");
+                scanf("%49s", nova.palavra);
+                while (getchar() != '\n');
+
+                // Criar uma cópia em maiúsculas para indexar na Trie com segurança
+                
+
+                // 5. Ler a Categoria
+                printf("Categoria: ");
+                fgets(nova.categoria, sizeof(nova.categoria), stdin);
+                nova.categoria[strcspn(nova.categoria, "\n")] = '\0';
+
+                // 6. Ler Palavras Relacionadas (Opcional - Lê até o utilizador digitar Enter vazio)
+                printf("\nPalavras Relacionadas (Pressione Enter vazio para terminar):\n");
+                while (nova.numero_de_relacionadas < 5) {
+                    char rel_buffer[50];
+                    printf(" - Relacionada %d: ", nova.numero_de_relacionadas + 1);
+                    fgets(rel_buffer, sizeof(rel_buffer), stdin);
+                    rel_buffer[strcspn(rel_buffer, "\n")] = '\0';
+
+                    if (strlen(rel_buffer) == 0) {
+                        break;
+                    }
+                    strcpy(nova.relacionadas[nova.numero_de_relacionadas], rel_buffer);
+                    nova.numero_de_relacionadas++;
+                }
+
+                // 7. Salvar na Base de Dados Híbrida (Vetor + Trie)
+                dicionario[totalPalavras] = nova; 
+                inserirPalavra(raiz, chave_trie, nova.id);
+                
+                totalPalavras++;
+                
+                printf("\nSucesso! Palavra '%s' inserida e indexada com o ID %d.\n", nova.palavra, nova.id);
+                printf("Nota: Nao se esqueca de escolher a Opcao 7 para gravar no arquivo antes de sair.\n");
                 break;
 
             case 2:
-                // Chama a tua função de consulta que já faz a busca na Trie e exibe a Struct
+                printf("Digite a palavra a consultar: ");
+                scanf("%49s", buffer_palavra);
                 consultarPalavra(dicionario, totalPalavras, raiz);
                 break;
 
             case 3:
-                // Atualiza o significado/contexto no vetor mantendo o ID
+                printf("Digite a palavra a atualizar: ");
                 atualizarDadosPalavra(raiz, dicionario, totalPalavras);
                 break;
 
@@ -107,7 +152,8 @@ int main() {
                 break;
 
             default:
-                if (opcao != -1) printf("Opcao invalida!\n");
+                if (opcao != -1) 
+                printf("Opcao invalida!\n");
                 break;
         }
 

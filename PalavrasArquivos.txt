@@ -87,4 +87,5 @@
 87|web|Sistema de paginas interligadas por links acessivel atraves da internet.|O desenvolvimento web exige conhecimentos de html css e javascript.|Informatica|internet,site,pagina,rede,www
 88|while|Estrutura de repeticao baseada numa condicao testada no inicio do bloco.|O loop while continua a ler enquanto existirem linhas no ficheiro.|Informatica|loop,repeticao,codigo,condicao,controle
 89|wifi|Tecnologia de rede sem fios que permite a conexao de dispositivos.|O sinal de wifi na sala de aulas esta muito fraco hoje.|Quotidiano|rede,internet,semfios,conexao,router
-90|xml|Linguagem de marcacao extensivel usada para estruturar e transportar dados.|O ficheiro xml continha a configuracao inicial da aplicacao.|Informatica|dados,marcacao,estrutura,ficheiro,formato
+90|xml|Linguagem de marcacao extensivel usada para estruturar e transportar dados|O ficheiro xml continha a configuracao inicial da aplicacao.|Informatica|dados,marcacao,estrutura,ficheiro,formato
+91|a|a|a|a|b,c,d,s,a,s,a,s,a,s
