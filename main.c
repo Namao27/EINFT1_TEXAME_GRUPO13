@@ -24,7 +24,7 @@ int main() {
 
 
     totalPalavras = carregarPalavrasDeArquivo(raiz, dicionario, NOME_ARQUIVO);
-    printf("Sistema iniciado. %d palavras carregadas de '%s'.\n", totalPalavras, NOME_ARQUIVO);
+    //printf("Sistema iniciado. %d palavras carregadas de '%s'.\n", totalPalavras, NOME_ARQUIVO);
 
     int opcao;
     char buffer_palavra[50];
@@ -38,7 +38,7 @@ int main() {
         printf("3. Atualizar Palavra\n");
         printf("4. Remover Palavra\n");
         printf("5. Listar Palavras (Ordem Alfabetica)\n");
-        printf("6. Sugestoes por Prefixo\n");
+        printf("6. Sugestoes De Pesquisa por Prefixo\n");
         printf("7. Guardar Alteracoes (Ficheiro)\n"); 
         printf("8. Estatisticas\n");
         printf("0. Sair\n");
@@ -70,7 +70,30 @@ int main() {
                 while (getchar() != '\n');
 
                 // Criar uma cópia em maiúsculas para indexar na Trie com segurança
-                
+                char chave_trie[50];
+                strcpy(chave_trie, nova.palavra);
+                converterParaMaiusculas(chave_trie);
+
+                char chave_trie_minuscula[50];
+                strcpy(chave_trie_minuscula, nova.palavra);
+                converterParaMinusculas(chave_trie_minuscula);
+
+                // Verificar se a palavra já existe para evitar duplicados
+                int idExistente;
+                if (pesquisarPalavra(raiz, chave_trie, &idExistente)) {
+                    printf("Erro: A palavra '%s' ja existe no dicionario!\n", nova.palavra);
+                    break;
+                }
+
+                // 3. Ler o Significado (permite espaços)
+                printf("Significado: ");
+                fgets(nova.significado, sizeof(nova.significado), stdin);
+                nova.significado[strcspn(nova.significado, "\n")] = '\0'; 
+
+                // 4. Ler o Contexto (permite espaços)
+                printf("Contexto: ");
+                fgets(nova.contexto, sizeof(nova.contexto), stdin);
+                nova.contexto[strcspn(nova.contexto, "\n")] = '\0';
 
                 // 5. Ler a Categoria
                 printf("Categoria: ");
@@ -82,7 +105,7 @@ int main() {
                 while (nova.numero_de_relacionadas < 5) {
                     char rel_buffer[50];
                     printf(" - Relacionada %d: ", nova.numero_de_relacionadas + 1);
-                    fgets(rel_buffer, sizeof(rel_buffer), stdin);
+                    fgets(rel_buffer,sizeof(rel_buffer), stdin);
                     rel_buffer[strcspn(rel_buffer, "\n")] = '\0';
 
                     if (strlen(rel_buffer) == 0) {
@@ -91,7 +114,6 @@ int main() {
                     strcpy(nova.relacionadas[nova.numero_de_relacionadas], rel_buffer);
                     nova.numero_de_relacionadas++;
                 }
-
                 // 7. Salvar na Base de Dados Híbrida (Vetor + Trie)
                 dicionario[totalPalavras] = nova; 
                 inserirPalavra(raiz, chave_trie, nova.id);
@@ -99,12 +121,13 @@ int main() {
                 totalPalavras++;
                 
                 printf("\nSucesso! Palavra '%s' inserida e indexada com o ID %d.\n", nova.palavra, nova.id);
-                printf("Nota: Nao se esqueca de escolher a Opcao 7 para gravar no arquivo antes de sair.\n");
+                printf("Nota:Gravar no arquivo antes de sair (7-Opcao).\n");
                 break;
 
             case 2:
-                printf("Digite a palavra a consultar: ");
-                scanf("%49s", buffer_palavra);
+                printf("Digite a palavra que deseja consultar:\n");
+                printf("Ligue o CAPS LOCK para Pesquisa: \n");
+                //scanf(" %49s", buffer_palavra);
                 consultarPalavra(dicionario, totalPalavras, raiz);
                 break;
 

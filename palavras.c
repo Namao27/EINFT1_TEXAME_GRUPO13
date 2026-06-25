@@ -32,8 +32,6 @@ void converterParaMinusculas(char *str) {
         }
     }
 }
-
-
 void validarPalavra(char *palavra) {
     for (int i = 0; palavra[i] != '\0'; i++) {
         if (palavra[i] < 'A' || palavra[i] > 'Z') {
@@ -42,7 +40,6 @@ void validarPalavra(char *palavra) {
         }
     }
 }
-
 Palavra* buscarPalavraPorID(Palavra palavras[], int numPalavras, int id) {
     for (int i = 0; i < numPalavras; i++) {
         if (palavras[i].id == id) {
@@ -51,9 +48,6 @@ Palavra* buscarPalavraPorID(Palavra palavras[], int numPalavras, int id) {
     }
     return NULL;
 }
-
-
-
 // OPÇÃO 1: Inserir Palavra
 void inserirPalavra(Trie_Palavras *raiz, char palavra[], int id) {
     Trie_Palavras *atual = raiz;
@@ -67,31 +61,54 @@ void inserirPalavra(Trie_Palavras *raiz, char palavra[], int id) {
     atual->fimPalavra = 1;
     atual->ID_palavra = id;
 }
-
 // OPÇÃO 2: Procurar / Consultar Palavra
-
-int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado) {
+int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado)
+{
     Trie_Palavras *atual = raiz;
-    for (int i = 0; palavra[i] != '\0'; i++) {
-        int indice = palavra[i] - 'A';
-        if (atual->filhos[indice] == NULL) {
+
+    for (int i = 0; palavra[i] != '\0'; i++)
+    {
+        char letra = palavra[i];
+
+        /* Normalização:
+           se estiver em minúscula,
+           converte para maiúscula */
+        if (letra >= 'a' && letra <= 'z')
+        {
+            letra = letra - ('a' - 'A');
+        }
+
+        /* Validação:
+           apenas letras A-Z são aceites */
+        if (letra < 'A' || letra > 'Z')
+        {
             *idEncontrado = -1;
             return 0;
         }
+
+        int indice = letra - 'A';
+
+        if (atual->filhos[indice] == NULL)
+        {
+            *idEncontrado = -1;
+            return 0;
+        }
+
         atual = atual->filhos[indice];
     }
-    if (atual->fimPalavra) {
+
+    if (atual->fimPalavra)
+    {
         *idEncontrado = atual->ID_palavra;
         return 1;
-    } else {
-        *idEncontrado = -1;
-        return 0;
     }
-}
 
+    *idEncontrado = -1;
+    return 0;
+}
 void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) {
     char palavra[50];
-    printf("Digite a palavra que deseja consultar: ");
+    //printf("Digite a palavra que deseja consultar:\n ");
     scanf("%s", palavra);
 
     int idEncontrado;
@@ -112,10 +129,9 @@ void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) 
             printf("Erro ao buscar a palavra por ID.\n");
         }
     } else {
-        printf("Palavra não encontrada.\n");
+        printf("Palavra não encontrada, Nao é Chave.\n");
     }
 }
-
 // OPÇÃO 3: Atualizar Palavra
 void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalavras) {
     char palavra[50];
@@ -144,7 +160,7 @@ void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalav
             fgets(p->contexto, sizeof(p->contexto), stdin);
             p->contexto[strcspn(p->contexto, "\n")] = '\0';
 
-            printf("Dados updated com sucesso em memoria!\n");
+            printf("Dados Atualidados com sucesso em memoria!\n");
             printf("Nota: Lembre-se de guardar as alteracoes no arquivo antes de sair.\n");
         } else {
             printf("Erro interno: ID da Trie nao corresponde a nenhuma palavra no vetor.\n");
@@ -153,26 +169,24 @@ void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalav
         printf("Palavra nao encontrada na Trie. Impossivel atualizar.\n");
     }
 }
-
 // OPÇÃO 4: Remover Palavra
 void removerPalavra(Trie_Palavras *raiz, char palavra[]) {
     Trie_Palavras *atual = raiz;
     for (int i = 0; palavra[i] != '\0'; i++) {
         int indice = palavra[i] - 'A';
         if (atual->filhos[indice] == NULL) {
-            printf("Palavra não encontrada. Não é possível remover.\n");
+            printf("Palavra não encontrada. \n Não é possível remover.\n");
             return;
         }
         atual = atual->filhos[indice];
     }
     if (atual->fimPalavra) {
         atual->fimPalavra = 0;
-        printf("Palavra removida com sucesso.\n");
+        printf("Palavra  %s removida com sucesso.\n", palavra);
     } else {
-        printf("Palavra não encontrada. Não é possível remover.\n");
+        printf("Palavra %s não encontrada. Não é possível remover.\n", palavra);
     }
 }
-
 // OPÇÃO 5: Listar Palavras
 void listarPalavras(Trie_Palavras *raiz, char prefixo[], int nivel) {
     if (raiz == NULL) {
@@ -189,7 +203,6 @@ void listarPalavras(Trie_Palavras *raiz, char prefixo[], int nivel) {
         }
     }
 }
-
 // OPÇÃO 6: Sugestões por Prefixo
 void listarSubArvore(Trie_Palavras *no, char prefixo[], int nivel) {
     if (no == NULL) return;
@@ -246,8 +259,6 @@ void guardarPalavrasEmArquivo(Palavra palavras[], int numPalavras, const char *i
     }
     fclose(arquivo);
 }
-
-// OPÇÃO 8: Estatísticas / Contar Palavras
 int contarPalavras(Trie_Palavras *raiz) {
     if (raiz == NULL) {
         return 0;
@@ -332,10 +343,7 @@ void liberarTrie(Trie_Palavras *raiz) {
 }
 
 void liberarPalavras(Palavra *palavras, int numPalavras) {
-    // Implementação mantida para compatibilidade com o .h, 
-    // mas não usada se o vetor for estático no main.
 }
-
 void liberarMemoria(Trie_Palavras *raiz, Palavra *palavras, int numPalavras) {
     liberarTrie(raiz);
     liberarPalavras(palavras, numPalavras);

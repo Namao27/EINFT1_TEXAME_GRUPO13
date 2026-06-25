@@ -98,7 +98,7 @@ void sugerirPalavrasPorPrefixo(Trie_Palavras *raiz, char prefixo[]) {
     printf("\n--- Sugestoes a partir de '%s' ---\n", prefixo);
     listarSubArvore(atual, buffer, i);
 }
-void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalavras) {
+    void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalavras) {
     char palavra[50];
     printf("Digite a palavra que deseja atualizar: ");
     scanf("%s", palavra);
@@ -143,7 +143,7 @@ int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado) {
     for (int i = 0; palavra[i] != '\0'; i++) {
         int indice = palavra[i] - 'A';
         if (atual->filhos[indice] == NULL) {
-            *idEncontrado = -1; // Palavra não encontrada
+            *idEncontrado = -1; 
             return 0;
         }
         atual = atual->filhos[indice];
