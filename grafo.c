@@ -15,6 +15,8 @@ int indiceValido(int i, int max)
     return (i >= 0 && i < max);
 }
 
+
+
 void adicionarRelacao(Grafo *g, int origem, int destino)
 {
     if (!indiceValido(origem, g->numVertices) ||
