@@ -1,26 +1,26 @@
-#inlude <stringh>
-#include "Ordenacao.h"
+#include <string.h>
+#include "ordenacao.h"
+/*#include "tipos.h"*/
 
 
-int compararPalaras(onst char *a, const char *b){
+int compararPalavra(const char *a, const char *b){
 return _stricmp(a,b);
 
 }
 
-void quickSort(Palavras *lista, int inicio, int fim ){
+void quickSort(Palavra *lista, int inicio, int fim ){
 	if (inicio>= fim) return;
 	
 	int esq= inicio;
 	int dir= fim;
-	Conceito pivo = lista[(inicio + fim)/2];
+	Palavra pivo = lista[(inicio + fim)/2];
 	
 	while (esq<=dir){
-		while(compararPalavras(lista[esq].palavra, pivo.palavra)<0) esq++;
-		while(ccompararPalavras(lista[dir].palavra, pivo.palavra)>0)
-dir--;	
+		while(compararPalavra(lista[esq].palavra, pivo.palavra)<0) esq++;
+		while(compararPalavra(lista[dir].palavra, pivo.palavra)>0) dir--;	
 
 if(esq<=dir){
-	Palavras temp =lista[esq];
+	Palavra temp =lista[esq];
 	lista[esq]= lista[dir];
 	lista[dir]= temp;
 	esq++;

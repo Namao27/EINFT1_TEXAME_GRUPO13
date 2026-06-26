@@ -5,7 +5,7 @@
 #include "busca.h"
 #include "grafo.h"
 #include "ordenacao.h"
-#include "trie.h"
+#include "estatistica.h"
 #include "palavras.h"
 
 #define MAX_PALAVRAS 1000
