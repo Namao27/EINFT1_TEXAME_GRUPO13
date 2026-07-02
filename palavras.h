@@ -12,6 +12,7 @@ typedef struct {
     char categoria[50];               // Movido para cima para seguir o fluxo do sscanf/fprintf
     char relacionadas[10][50];
     int numero_de_relacionadas;
+    int pesquisas;
 } Palavra;
 
 // 2. Definição do nó da árvore Trie

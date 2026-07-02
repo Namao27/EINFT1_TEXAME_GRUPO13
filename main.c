@@ -10,6 +10,11 @@
 
 #define MAX_PALAVRAS 1000
 #define NOME_ARQUIVO "PalavrasArquivos.txt"
+void lerString(char *buffer, int tamanho)
+{
+    fgets(buffer, tamanho, stdin);
+    buffer[strcspn(buffer, "\n")] = '\0';
+}
 
 int main() {
     // 1. Inicialização das estruturas de dados
@@ -65,6 +70,7 @@ int main() {
                 Palavra nova;
                 nova.id = totalPalavras + 1;
                 nova.numero_de_relacionadas = 0;
+                nova.pesquisas = 0;
                 printf("Palavra: ");
                 scanf("%49s", nova.palavra);
                 while (getchar() != '\n');
@@ -132,7 +138,6 @@ int main() {
                 break;
 
             case 3:
-                printf("Digite a palavra a atualizar: ");
                 atualizarDadosPalavra(raiz, dicionario, totalPalavras);
                 break;
 
@@ -165,9 +170,7 @@ int main() {
                 break;
 
             case 8:
-                printf("\n--- Estatisticas ---\n");
-                printf("Total de palavras ativas na Trie: %d\n", contarPalavras(raiz));
-                printf("Total de registos no vetor: %d\n", totalPalavras);
+                mostrarEstatisticas(dicionario, totalPalavras);
                 break;
 
             case 0:

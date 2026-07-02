@@ -89,3 +89,13 @@
 88|while|Estrutura de repeticao baseada numa condicao testada no inicio do bloco.|O loop while continua a ler enquanto existirem linhas no ficheiro.|Informatica|
 89|wifi|Tecnologia de rede sem fios que permite a conexao de dispositivos.|O sinal de wifi na sala de aulas esta muito fraco hoje.|Quotidiano|
 90|xml|Linguagem de marcacao extensivel usada para estruturar e transportar dados|O ficheiro xml continha a configuracao inicial da aplicacao.|Informatica|
+92|BASE|Sistema organizado para armazenar e gerir informacoes.|Apps, sites, redes sociais.|Armazenamento|
+93|COMPILAR|Programa que traduz codigo fonte para linguagem maquina.|c, c++, java|Ferramenta de programacao|
+94|SOFTWARE|Programas e sistemas que rodam no hardware.|Parte logica do sistema.|Informatica |
+95|REDES|Comunicaá∆o entre dispositivos.|Troca de dados entre m†quinas.|Informatica|
+96|ARRAY|Estrutura que guarda v†rios valores do mesmo tipo.|lista de notas, idades, sensores, etc.|Programaá∆o|
+97|BUG|Erro ou falha no c¢digo.|quando o programa n∆o faz o que tu queres, tens um bug.|Programaá∆o|
+98|ERRO|Aá∆o ou resultado incorreto no c¢digo ou no sistema.|acontece quando o programa tenta fazer algo imposs°vel ou mal escrito|Execuá∆o|
+100|FALHA|quando um sistema ou parte dele n∆o funciona como esperado|pode ser mais "grave" que um erro, tipo um sistema que deixa de responder.|Sistema|
+101|DEFEITO|Imperfeiá∆o ou problema presente no c¢digo ou no sistema desde a origem|muitas vezes vem do desenvolvimento (c¢digo mal feito ou l¢gica errada).|Desenvolvimento|
+101|INTEROPERABILIDADE|Capacidade de diferentes sistemas, programas ou componentes conseguirem comunicar e trabalhar entre si.|APIs, redes, cloud|Programacao|

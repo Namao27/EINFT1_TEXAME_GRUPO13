@@ -1,11 +1,24 @@
 #ifndef ESTATISTICA_H
 #define ESTATISTICA_H
 
-#include "tipos.h"
+#include "palavras.h"
 
-void totalPalavras(Conceito vetor[], int n);
-void totalCategorias(Conceito vetor[], int n);
-void categoriaMaisUsada(Conceito vetor[], int n);
-void mostrarEstatisticas(Conceito vetor[], int n);
+void totalPalavras(Palavra vetor[], int n);
+void totalPesquisas(Palavra vetor[], int n);
+void totalCategorias(Palavra vetor[], int n);
+
+void palavraMaisPesquisada(Palavra vetor[], int n);
+void palavraMenosPesquisada(Palavra vetor[], int n);
+
+void mediaPesquisas(Palavra vetor[], int n);
+void top5Palavras(Palavra vetor[], int n);
+
+void palavrasNuncaPesquisadas(Palavra vetor[], int n);
+void taxaUtilizacao(Palavra vetor[], int n);
+
+void barrasCategorias(Palavra vetor[], int n);
+
+void mostrarHora();
+void mostrarEstatisticas(Palavra vetor[], int n);
 
 #endif

@@ -108,28 +108,37 @@ int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado)
 }
 void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) {
     char palavra[50];
-    //printf("Digite a palavra que deseja consultar:\n ");
+
     scanf("%s", palavra);
 
     int idEncontrado;
     pesquisarPalavra(raiz, palavra, &idEncontrado);
 
     if (idEncontrado != -1) {
+
         Palavra *palavraEncontrada = buscarPalavraPorID(palavras, numPalavras, idEncontrado);
+
         if (palavraEncontrada != NULL) {
+
+            // Conta mais uma pesquisa
+            palavraEncontrada->pesquisas++;
+
             printf("Palavra: %s\n", palavraEncontrada->palavra);
             printf("Significado: %s\n", palavraEncontrada->significado);
             printf("Contexto: %s\n", palavraEncontrada->contexto);
             printf("Categoria: %s\n", palavraEncontrada->categoria);
+
             printf("Palavras Relacionadas:\n");
             for (int i = 0; i < palavraEncontrada->numero_de_relacionadas; i++) {
                 printf("- %s\n", palavraEncontrada->relacionadas[i]);
             }
+
         } else {
             printf("Erro ao buscar a palavra por ID.\n");
         }
+
     } else {
-        printf("Palavra não encontrada, Nao é Chave.\n");
+        printf("Palavra nao encontrada. Nao e Chave.\n");
     }
 }
 // OPÇÃO 3: Atualizar Palavra

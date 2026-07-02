@@ -1,71 +1,275 @@
 #include <stdio.h>
+#include <time.h>
+#include <string.h>
 #include "estatistica.h"
 
-void totalPalavras(Conceito vetor[], int n)
+// =========================
+// HORA DO SISTEMA
+// =========================
+void mostrarHora()
+{
+    time_t agora = time(NULL);
+    struct tm *t = localtime(&agora);
+
+    printf("%02d:%02d:%02d\n",
+           t->tm_hour,
+           t->tm_min,
+           t->tm_sec);
+}
+
+// =========================
+// TOTAL DE PALAVRAS
+// =========================
+void totalPalavras(Palavra vetor[], int n)
 {
     printf("Total de palavras: %d\n", n);
 }
 
-void totalCategorias(Conceito vetor[], int n)
+// =========================
+// TOTAL PESQUISAS 
+// =========================
+void totalPesquisas(Palavra vetor[], int n)
 {
-    int i;
-    int programacao = 0, matematica = 0, redes = 0;
+    int total = 0;
 
-    for(i = 0; i < n; i++)
+    for(int i=0;i<n;i++)
+        total += vetor[i].pesquisas;
+
+    printf("Total de pesquisas: %d\n", total);
+}
+
+// =========================
+// CATEGORIAS (STRING CORRIGIDO)
+// =========================
+void totalCategorias(Palavra vetor[], int n)
+{
+    int prog = 0, mat = 0, red = 0, outros = 0;
+
+    for(int i = 0; i < n; i++)
     {
-        if(vetor[i].categoria == 1)
-            programacao++;
-        else if(vetor[i].categoria == 2)
-            matematica++;
-        else if(vetor[i].categoria == 3)
-            redes++;
+        if(strcmp(vetor[i].categoria, "Programacao") == 0)
+            prog++;
+        else if(strcmp(vetor[i].categoria, "Matematica") == 0)
+            mat++;
+        else if(strcmp(vetor[i].categoria, "Redes") == 0)
+            red++;
+        else
+            outros++;
     }
 
     printf("\nCategorias:\n");
-    printf("Programacao: %d\n", programacao);
-    printf("Matematica: %d\n", matematica);
-    printf("Redes: %d\n", redes);
+    printf("Programacao: %d\n", prog);
+    printf("Matematica : %d\n", mat);
+    printf("Redes      : %d\n", red);
+    printf("Outros      : %d\n", outros);
 }
 
-void categoriaMaisUsada(Conceito vetor[], int n)
+// =========================
+// PALAVRA MAIS LONGA
+// =========================
+void palavraMaisLonga(Palavra vetor[], int n)
 {
-    int i;
-    int prog = 0, mat = 0, red = 0;
+    if(n == 0) return;
 
-    for(i = 0; i < n; i++)
+    int idx = 0;
+
+    for(int i = 1; i < n; i++)
+        if(strlen(vetor[i].palavra) > strlen(vetor[idx].palavra))
+            idx = i;
+
+    printf("Mais longa: %s\n", vetor[idx].palavra);
+}
+
+// =========================
+// PALAVRA MAIS CURTA
+// =========================
+void palavraMaisCurta(Palavra vetor[], int n)
+{
+    if(n == 0)
     {
-        if(vetor[i].categoria == 1) prog++;
-        else if(vetor[i].categoria == 2) mat++;
-        else if(vetor[i].categoria == 3) red++;
+        printf("Sem palavras.\n");
+        return;
     }
 
-    printf("\nCategoria mais usada: ");
+    int idx = -1;
+    int menor = 999999;
 
-    if(prog >= mat && prog >= red)
-        printf("Programacao\n");
-    else if(mat >= prog && mat >= red)
-        printf("Matematica\n");
+    for(int i = 0; i < n; i++)
+    {
+        int len = strlen(vetor[i].palavra);
+
+        if(len > 0 && len < menor)
+        {
+            menor = len;
+            idx = i;
+        }
+    }
+
+    if(idx != -1)
+        printf("Mais curta: %s\n", vetor[idx].palavra);
     else
-        printf("Redes\n");
+        printf("Mais curta: nao encontrada\n");
 }
 
-void mostrarEstatisticas(Conceito vetor[], int n)
+// =========================
+// PLACEHOLDERS (SEM PESQUISAS)
+// =========================
+void palavraMaisPesquisada(Palavra vetor[], int n)
 {
-    int i;
+    if(n==0)
+        return;
 
-    int maisPesquisada = 0;
+    int maior=0;
 
-    for(i = 1; i < n; i++)
+    for(int i=1;i<n;i++)
+        if(vetor[i].pesquisas > vetor[maior].pesquisas)
+            maior=i;
+
+    printf("Mais pesquisada: %s (%d pesquisas)\n",
+           vetor[maior].palavra,
+           vetor[maior].pesquisas);
+}
+
+void palavrasPoucoPesquisadas(Palavra vetor[], int n)
+{
+    printf("\nPalavras pouco pesquisadas (1 vez):\n");
+
+    int encontrou = 0;
+
+    for(int i = 0; i < n; i++)
     {
-        if(vetor[i].pesquisas > vetor[maisPesquisada].pesquisas)
-            maisPesquisada = i;
+        if(vetor[i].pesquisas == 1)
+        {
+            printf("- %s (1 pesquisa)\n", vetor[i].palavra);
+            encontrou = 1;
+        }
     }
 
-    printf("\n=== ESTATISTICAS ===\n");
-    totalPalavras(vetor, n);
-    categoriaMaisUsada(vetor, n);
+    if(!encontrou)
+    {
+        printf("Nenhuma palavra foi pesquisada apenas 1 vez.\n");
+    }
+}
 
-    printf("Mais pesquisada: %s (%d)\n",
-           vetor[maisPesquisada].palavra,
-           vetor[maisPesquisada].pesquisas);
+void mediaPesquisas(Palavra vetor[], int n)
+{
+    if(n==0)
+        return;
+
+    int total=0;
+
+    for(int i=0;i<n;i++)
+        total+=vetor[i].pesquisas;
+
+    printf("Media de pesquisas: %.2f\n",
+           (float)total/n);
+}
+
+void palavrasNuncaPesquisadas(Palavra vetor[], int n)
+{
+    printf("\nNunca pesquisadas:\n");
+
+    int encontrou=0;
+
+    for(int i=0;i<n;i++)
+    {
+        if(vetor[i].pesquisas==0)
+        {
+            printf("- %s\n",vetor[i].palavra);
+            encontrou=1;
+        }
+    }
+
+    if(!encontrou)
+        printf("Nenhuma.\n");
+}
+void taxaUtilizacao(Palavra vetor[], int n)
+{
+    if(n==0)
+        return;
+
+    int usadas=0;
+
+    for(int i=0;i<n;i++)
+        if(vetor[i].pesquisas>0)
+            usadas++;
+
+    printf("Taxa de utilizacao: %.2f%%\n",
+           (float)usadas*100/n);
+}
+
+#include <stdio.h>
+#include <string.h>
+
+void top5Palavras(Palavra vetor[], int n)
+{
+    if(n == 0)
+    {
+        printf("TOP 5: sem dados\n");
+        return;
+    }
+
+    // cópia do vetor (não mexe no original)
+    Palavra copia[MAX_PALAVRAS];
+
+    for(int i = 0; i < n; i++)
+        copia[i] = vetor[i];
+
+    // ordenação simples (Bubble Sort)
+    for(int i = 0; i < n - 1; i++)
+    {
+        for(int j = 0; j < n - i - 1; j++)
+        {
+            if(copia[j].pesquisas < copia[j + 1].pesquisas)
+            {
+                Palavra temp = copia[j];
+                copia[j] = copia[j + 1];
+                copia[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("\nTOP 5 PALAVRAS MAIS PESQUISADAS:\n");
+
+    int limite = (n < 5) ? n : 5;
+
+    for(int i = 0; i < limite; i++)
+    {
+        printf("%dº %s - %d pesquisas\n",
+               i + 1,
+               copia[i].palavra,
+               copia[i].pesquisas);
+    }
+}
+
+// =========================
+// RELATORIO FINAL
+// =========================
+void mostrarEstatisticas(Palavra vetor[], int n)
+{
+    printf("\n========================\n");
+    printf("   RELATORIO ESTATISTICO\n");
+    printf("========================\n");
+
+    printf("Hora: ");
+    mostrarHora();
+
+    printf("\n");
+
+    totalPalavras(vetor, n);
+    totalCategorias(vetor, n);
+   
+
+    palavraMaisLonga(vetor, n);
+    palavraMaisCurta(vetor, n);
+
+    totalPesquisas(vetor, n);
+    palavraMaisPesquisada(vetor, n);
+    palavrasPoucoPesquisadas(vetor, n);
+    mediaPesquisas(vetor, n);
+    palavrasNuncaPesquisadas(vetor, n);
+    taxaUtilizacao(vetor, n);
+    top5Palavras(vetor, n);
+
+    printf("========================\n");
 }
