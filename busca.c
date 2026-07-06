@@ -1,4 +1,4 @@
-#include "busca.h"
+gi#include "busca.h"
 #include <string.h>
 
 int buscaBinaria(Palavra vetor[], int tamanho, char palavra[]) {
