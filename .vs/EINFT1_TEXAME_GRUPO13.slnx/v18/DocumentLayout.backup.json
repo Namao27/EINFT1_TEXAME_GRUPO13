@@ -1,0 +1,193 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\arquivo.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:arquivo.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\trie.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:trie.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\trie.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:trie.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\palavras.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:palavras.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\palavras.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:palavras.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\grafo.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:grafo.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\grafo.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:grafo.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\busca.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:busca.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\busca.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:busca.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\arquivo.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:arquivo.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "trie.h",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\trie.h",
+              "RelativeDocumentMoniker": "trie.h",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\trie.h",
+              "RelativeToolTip": "trie.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-13T19:23:15.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "trie.c",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\trie.c",
+              "RelativeDocumentMoniker": "trie.c",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\trie.c",
+              "RelativeToolTip": "trie.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-06-13T19:23:13.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "palavras.c",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\palavras.c",
+              "RelativeDocumentMoniker": "palavras.c",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\palavras.c",
+              "RelativeToolTip": "palavras.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-06-13T19:23:11.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "palavras.h",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\palavras.h",
+              "RelativeDocumentMoniker": "palavras.h",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\palavras.h",
+              "RelativeToolTip": "palavras.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-13T19:23:08.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "grafo.h",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\grafo.h",
+              "RelativeDocumentMoniker": "grafo.h",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\grafo.h",
+              "RelativeToolTip": "grafo.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-13T19:22:48.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "grafo.c",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\grafo.c",
+              "RelativeDocumentMoniker": "grafo.c",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\grafo.c",
+              "RelativeToolTip": "grafo.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-06-13T19:22:46.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "busca.h",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\busca.h",
+              "RelativeDocumentMoniker": "busca.h",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\busca.h",
+              "RelativeToolTip": "busca.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-13T19:22:43.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "busca.c",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\busca.c",
+              "RelativeDocumentMoniker": "busca.c",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\busca.c",
+              "RelativeToolTip": "busca.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-06-13T19:22:41.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "arquivo.h",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\arquivo.h",
+              "RelativeDocumentMoniker": "arquivo.h",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\arquivo.h",
+              "RelativeToolTip": "arquivo.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-13T19:22:35.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "arquivo.c",
+              "DocumentMoniker": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\arquivo.c",
+              "RelativeDocumentMoniker": "arquivo.c",
+              "ToolTip": "C:\\Users\\eliel\\source\\repos\\EINFT1_TEXAME_GRUPO13\\arquivo.c",
+              "RelativeToolTip": "arquivo.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-06-13T19:22:30.243Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+91|a|a|a|a|
+1|algoritmo|Sequencia finita de passos logicos e bem definidos para resolver um problema.|Utilizado amplamente no desenvolvimento de software e automacao de processos.|Informatica|
+2|ponteiro|Variavel que armazena o endereco de memoria de outra variavel.|Muito utilizado em C para alocacao dinamica de memoria e manipulacao de arrays.|Informatica|
+3|recursividade|Metodo de programacao no qual uma funcao chama a si mesma para resolver subproblemas.|Aplicado em algoritmos de busca, ordenacao e manipulacao de estruturas em arvore.|Informatica|
+4|trie|Estrutura de dados de arvore ordenada utilizada para armazenar um conjunto dinamico de strings.|Ideal para implementar sistemas de auto-complete, corretores ortograficos e dicionarios rapidos.|Estruturas de Dados|
+5|compilador|Programa que traduz o codigo fonte escrito numa linguagem de alto nivel para linguagem de maquina.|Essencial no ciclo de desenvolvimento de linguagens como C, C++ e Rust.|Informatica|
+6|criptografia|Pratica de codificar informacoes para que apenas o destinatario pretendido possa ler e processar.|Crucial para a seguranca de dados na internet, transacoes bancarias e privacidade.|Seguranca|
+7|matriz|Estrutura de dados bidimensional composta por linhas e colunas acessadas por dois indices.|Usada em computacao grafica, processamento de imagem e algebra linear.|Matematica|
+8|grafo|Estrutura composta por um conjunto de vertices ligados por um conjunto de arestas.|Utilizado para modelar redes sociais, rotas de mapas e conexoes de internet.|Estruturas de Dados|
+9|depuracao|Processo de encontrar e reduzir o numero de erros ou defeitos num programa de computador.|Atividade diaria de programadores usando ferramentas como GDB para analisar o estado da memoria.|Informatica|
+10|encapsulamento|Principio de ocultacao dos detalhes internos de funcionamento de uma estrutura ou classe.|Pilar fundamental da programacao orientada a objetos para garantir seguranca e modularidade.|Programacao|
+11|fila|Estrutura de dados linear que segue o principio de que o primeiro a entrar e o primeiro a sair.|Usada no escalonamento de processos em sistemas operativos e buffers de impressao.|Estruturas de Dados|
+12|pilha|Estrutura de dados linear que segue o principio de que o ultimo a entrar e o primeiro a sair.|Utilizada para gerir chamadas de funcoes e na funcionalidade de desfazer em editores de texto.|Estruturas de Dados|
+13|indexacao|Tecnica usada para acelerar o acesso aos dados criando caminhos rapidos de busca.|Aplicada intensamente em bases de dados e motores de busca como o Google.|Bases de Dados|
+14|heranca|Mecanismo que permite que uma nova classe adquira as propriedades e metodos de uma classe existente.|Permite o reaproveitamento de codigo e a criacao de hierarquias complexas de objetos.|Programacao|
+15|bit|A menor unidade de informacao num computador, podendo assumir apenas o valor 0 ou 1.|Base de toda a computacao digital e da arquitetura de processadores.|Informatica|
+16|hashing|Processo de transformar uma grande quantidade de dados numa string ou valor de tamanho fixo mais curto.|Usado em tabelas de dispersao para busca instatanea e na verificacao de integridade de ficheiros.|Algoritmos|
+17|sintaxe|Conjunto de regras que definem as combinacoes corretas de simbolos de uma linguagem de programacao.|O erro de sintaxe impede a compilacao do codigo fonte pelo compilador.|Programacao|
+18|api|Conjunto de rotinas e padroes estabelecidos por um software para utilizacao das suas funcionalidades por outros.|Permite a integracao entre sistemas diferentes, como ligar um site a um sistema de pagamentos.|Informatica|
+19|polimorfismo|Capacidade de um objeto assumir diferentes formas ou responder a mesma mensagem de maneiras distintas.|Utilizado para invocar metodos especificos em subclasses usando uma referencia da classe pai.|Programacao|
+20|hardware|A parte fisica de um computador, composta por circuitos, cabos, placas e componentes eletronicos.|Trabalha em conjunto com o software para executar as instrucoes de um utilizador.|Informatica|
+21|abajur|Objeto decorativo com uma cupula que serve para resguardar a luz de uma lampada.|Colocado sobre a mesa de cabeceira para leitura noturna.|Quotidiano|
+22|abstracao|Processo de isolar um elemento ou propriedade de um objeto para focar no essencial.|Pilar da programacao orientado a objetos que esconde detalhes complexos.|Informatica|
+23|arquivo|Colecao organizada de documentos ou dados guardados para uso posterior.|O utilizador guardou o relatorio num arquivo digital protegido.|Quotidiano|
+24|banco|Instituicao financeira que lida com depositos, emprestimos e transacoes de dinheiro.|Preciso ir ao banco para levantar dinheiro e pagar as contas.|Quotidiano|
+25|backup|Copia de seguranca de dados digitais feita para prevenir a perda de informacao.|E uma boa pratica fazer backup semanal dos arquivos do projeto.|Informatica|
+26|bicicleta|Veiculo de duas rodas movido pelo esforco muscular do proprio condutor.|Uso a bicicleta para ir para a faculdade e praticar exercicio.|Quotidiano|
+27|cadeira|Movel com assento e encosto destinado a servir de assento para uma pessoa.|Comprei uma cadeira ergonomica para trabalhar no computador.|Quotidiano|
+28|cache|Memoria de acesso ultra rapido que armazena dados temporarios muito utilizados.|O navegador web limpa a cache para carregar as paginas atualizadas.|Informatica|
+29|calculadora|Dispositivo eletronico ou mecanico usado para efetuar operacoes matematicas.|Utilizei a calculadora para conferir a media final da disciplina.|Quotidiano|
+30|dados|Fatos ou informacoes brutas que podem ser processados por um computador.|A base de dados armazena as informacoes de todos os utilizadores.|Informatica|
+31|dicionario|Livro ou arquivo digital que contem o significado das palavras de uma lingua.|Este projeto consiste em criar um dicionario usando uma √°rvore Trie.|Quotidiano|
+32|dominio|Nome exclusivo que serve para identificar um site na rede internet.|O dominio da nossa universidade termina em ponto edu ou ponto pt.|Informatica|
+33|elevador|Mecanismo de transporte vertical usado para mover pessoas entre andares.|O elevador do bloco de aulas avariou esta manha.|Quotidiano|
+34|escopo|Ambiente de visibilidade ou limite de atuacao de uma variavel ou projeto.|A variavel declarada dentro da funcao tem escopo local.|Informatica|
+35|escola|Instituicao destinada ao ensino e a aprendizagem de alunos e estudantes.|A escola primaria onde estudei ficava perto da minha casa.|Quotidiano|
+36|framework|Conjunto de ferramentas e bibliotecas que servem de base para criar software.|Usamos um framework moderno para acelerar o desenvolvimento do site.|Informatica|
+37|funcao|Bloco de codigo reutilizavel que executa uma tarefa especifica e retorna algo.|Escrevi uma funcao em C para ler o ficheiro do dicionario.|Informatica|
+38|futebol|Desporto coletivo jogado com uma bola entre duas equipas de onze jogadores.|Fomos ao estadio assistir ao grande jogo de futebol no sabado.|Quotidiano|
+39|garrafa|Recipiente de vidro ou plastico usado para armazenar e transportar liquidos.|Mantenho sempre uma garrafa de agua fresca na minha mesa de estudo.|Quotidiano|
+40|gateway|Dispositivo que estabelece a ligacao e comunicacao entre duas redes diferentes.|O router da operadora serve como gateway para a internet da casa.|Informatica|
+41|geladeira|Eletrodomestico que serve para conservar alimentos a baixas temperaturas.|Coloquei os sumos e as frutas na geladeira para ficarem frescos.|Quotidiano|
+42|hd|Dispositivo de armazenamento magnetico nao volatil usado em computadores.|Substitui o meu antigo HD por um SSD para o sistema iniciar mais rapido.|Informatica|
+43|html|Linguagem de marcacao utilizada para estruturar os blocos de uma pagina web.|O programador usou HTML para criar a estrutura basica do site.|Informatica|
+44|hotel|Estabelecimento que oferece alojamento e refeicoes a viajantes e turistas.|Ficamos hospedados num hotel muito confortavel perto da praia.|Quotidiano|
+45|ide|Ambiente de desenvolvimento integrado que reune ferramentas para programar.|Uso o VS Code como IDE principal para escrever os programas em C.|Informatica|
+46|impressora|Periferico que verte textos ou imagens do computador para o papel.|Preciso de ligar a impressora para imprimir o relatorio do projeto.|Informatica|
+47|internet|Rede mundial de computadores interligados que partilham dados e servicos.|A internet falhou mesmo no momento em que enviava o trabalho.|Quotidiano|
+48|janela|Abertura na parede de um edificio que permite a entrada de luz e ar.|Abri a janela do quarto para o ar circular durante a tarde.|Quotidiano|
+49|java|Linguagem de programacao orientada a objetos muito utilizada em sistemas empresariais.|Aprendemos a sintaxe basica de Java no semestre passado.|Informatica|
+50|jogo|Atividade fisica ou mental com regras que serve para entretenimento ou desporto.|Passamos a noite a jogar um jogo de tabuleiro muito divertido.|Quotidiano|
+51|kernel|Nucleo do sistema operativo que faz a ponte entre o hardware e o software.|O kernel do Linux gerencia a memoria de forma muito eficiente.|Informatica|
+52|keylog|Software malicioso que regista todas as teclas premidas pelo utilizador.|O antiv√≠rus detetou um keylog que tentava roubar senhas do banco.|Informatica|
+53|kilobyte|Unidade de medida de dados digitais equivalente a mil e vinte e quatro bytes.|O ficheiro de texto do dicionario ocupa apenas alguns kilobytes.|Informatica|
+54|lan|Rede de area local que interliga computadores num espaco fisico restrito.|Configuramos uma LAN na sala para jogar em rede com os colegas.|Informatica|
+55|livro|Colecao de folhas de papel impressas e reunidas numa capa com texto.|Estou a ler um livro excelente sobre algoritmos avan√ßados.|Quotidiano|
+56|loop|Estrutura de controlo que repete um bloco de instrucoes enquanto for verdade.|Usei um loop while para ler as linhas do ficheiro ate ao fim.|Informatica|
+57|main|Funcao principal de um programa em C por onde comeca a execucao.|O codigo do dicionario deve ser chamado a partir da funcao main.|Informatica|
+58|memoria|Componente do computador que armazena dados de forma temporaria ou permanente.|A √°rvore Trie fica guardada na memoria RAM enquanto o programa corre.|Informatica|
+59|mesa|Movel com tampo horizontal sustentado por pes usado para apoiar objetos.|Coloquei os meus livros e o computador em cima da mesa.|Quotidiano|
+60|no|Estrutura fundamental de uma arvore ou lista que contem dados e ponteiros.|Cada no da arvore Trie contem um vetor de ponteiros para os filhos.|Informatica|
+61|notbook|Computador portatil que integra ecra teclado e bateria numa unica unidade.|Levei o meu notebook para a biblioteca para terminar o trabalho.|Quotidiano|
+62|nuvem|Servico de armazenamento e processamento de dados feito atraves da internet.|Guardo o codigo fonte do meu projeto na nuvem para nao perder.|Informatica|
+63|objeto|Instancia concreta de uma classe criada na programacao orientada a objetos.|Criamos um objeto do tipo palavra para manipular os dados lidos.|Informatica|
+64|operador|Simbolo que instrui o compilador a realizar uma acao matematica ou logica.|O operador de soma em C e representado pelo caractere mais.|Informatica|
+65|oraculo|Sistema ou base de dados externa que fornece informacoes confiaveis.|O motor de busca funciona como um oraculo para tirar duvidas.|Quotidiano|
+66|parametro|Variavel recebida por uma funcao para ser usada durante a sua execucao.|A funcao de busca recebe a palavra como parametro de entrada.|Informatica|
+67|perfume|Liquido aromatico com cheiro agradavel usado para perfumar o corpo.|Recebi um perfume muito cheiroso no meu dia de aniversario.|Quotidiano|
+68|porta|Abertura que permite a entrada e saida de pessoas de um compartimento.|Fechei a porta da sala de estudo para evitar o barulho do corredor.|Quotidiano|
+69|quadro|Superficie lisa usada por professores para escrever e desenhar nas aulas.|O professor desenhou a estrutura da √°rvore Trie no quadro.|Quotidiano|
+70|query|Instrucao de consulta enviada a uma base de dados para extrair informacao.|Escrevi uma query para listar todos os utilizadores ativos.|Informatica|
+71|queue|Termo em ingles para a estrutura de dados do tipo fila.|A queue processa os elementos na ordem em que eles chegam.|Informatica|
+72|ram|Memoria volatil de acesso rapido usada pelo sistema operativo.|O programa precisa de memoria RAM suficiente para carregar a √°rvore.|Informatica|
+73|rede|Conjunto de computadores e dispositivos interligados que partilham recursos.|A rede da faculdade permite o acesso aos servidores locais.|Informatica|
+74|relogio|Dispositivo usado para medir e indicar o tempo em horas e minutos.|Olhei para o relogio e percebi que ja era muito tarde.|Quotidiano|
+75|servidor|Computador potente que fornece servicos e dados a outros computadores clientes.|O site do dicionario esta alojado num servidor Linux cloud.|Informatica|
+76|smartphone|Telemovel inteligente com acesso a internet e capacidade de correr apps.|Uso o smartphone para ler os emails quando estou fora de casa.|Quotidiano|
+77|string|Cadeia de caracteres que representa texto numa linguagem de programacao.|A struct guarda a palavra e o significado em vetores do tipo string.|Informatica|
+78|teclado|Periferico de entrada composto por teclas usado para digitar texto.|O teclado do meu computador tem o layout em portugues.|Informatica|
+79|telefone|Aparelho eletronico usado para transmitir som e voz a longa distancia.|O telefone da secretaria esteve a tocar durante toda a manha.|Quotidiano|
+71|televisao|Aparelho eletronico com ecra que recebe e exibe sinais de video e audio.|Gostamos de ver o telejornal na televisao da sala de jantar.|Quotidiano|
+81|url|Endereco virtual exclusivo que indica a localizacao de uma pagina web.|Copia o URL do site e envia por mensagem para o grupo.|Informatica|
+82|utilizador|Pessoa que interage e utiliza um sistema informatico ou aplicacao.|O sistema valida se o utilizador introduziu uma senha valida.|Informatica|
+83|uva|Fruto da videira de formato arredondado usado para produzir vinho.|Comprei um cacho de uvas doces no mercado esta semana.|Quotidiano|
+84|variavel|Espaco reservado na memoria para armazenar um valor que pode mudar.|Declarei uma variavel do tipo inteiro para contar as palavras.|Informatica|
+85|vetor|Estrutura de dados que armazena elementos do mesmo tipo de forma sequencial.|A struct usa um vetor de strings para as palavras relacionadas.|Informatica|
+86|video|Ficheiro ou transmissao de imagens em movimento acompanhadas de som.|Assisti a um video tutorial que explica como funciona a √°rvore Trie.|Quotidiano|
+87|web|Sistema de paginas interligadas por links acessivel atraves da internet.|O desenvolvimento web exige conhecimentos de html css e javascript.|Informatica|
+88|while|Estrutura de repeticao baseada numa condicao testada no inicio do bloco.|O loop while continua a ler enquanto existirem linhas no ficheiro.|Informatica|
+89|wifi|Tecnologia de rede sem fios que permite a conexao de dispositivos.|O sinal de wifi na sala de aulas esta muito fraco hoje.|Quotidiano|
+90|xml|Linguagem de marcacao extensivel usada para estruturar e transportar dados|O ficheiro xml continha a configuracao inicial da aplicacao.|Informatica|
+92|BASE|Sistema organizado para armazenar e gerir informacoes.|Apps, sites, redes sociais.|Armazenamento|
+93|COMPILAR|Programa que traduz codigo fonte para linguagem maquina.|c, c++, java|Ferramenta de programacao|
+94|SOFTWARE|Programas e sistemas que rodam no hardware.|Parte logica do sistema.|Informatica |
+95|REDES|Comunicaá∆o entre dispositivos.|Troca de dados entre m†quinas.|Informatica|
+96|ARRAY|Estrutura que guarda v†rios valores do mesmo tipo.|lista de notas, idades, sensores, etc.|Programaá∆o|
+97|BUG|Erro ou falha no c¢digo.|quando o programa n∆o faz o que tu queres, tens um bug.|Programaá∆o|
+98|ERRO|Aá∆o ou resultado incorreto no c¢digo ou no sistema.|acontece quando o programa tenta fazer algo imposs°vel ou mal escrito|Execuá∆o|
+100|FALHA|quando um sistema ou parte dele n∆o funciona como esperado|pode ser mais "grave" que um erro, tipo um sistema que deixa de responder.|Sistema|
+101|DEFEITO|Imperfeiá∆o ou problema presente no c¢digo ou no sistema desde a origem|muitas vezes vem do desenvolvimento (c¢digo mal feito ou l¢gica errada).|Desenvolvimento|
+101|INTEROPERABILIDADE|Capacidade de diferentes sistemas, programas ou componentes conseguirem comunicar e trabalhar entre si.|APIs, redes, cloud|Programacao|
