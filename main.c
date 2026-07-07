@@ -144,9 +144,9 @@ int main() {
             case 4:
                 printf("Digite a palavra a remover: ");
                 scanf("%s", buffer_palavra);
-                while (getchar() != '\n');
-                converterParaMaiusculas(buffer_palavra);
+                while(getchar() != '\n');
                 removerPalavra(raiz, buffer_palavra);
+                removerDoVetor(dicionario, &totalPalavras, buffer_palavra);
                 break;
 
             case 5:

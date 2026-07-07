@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <string.h>
 #include "estatistica.h"
@@ -85,32 +86,24 @@ void palavraMaisLonga(Palavra vetor[], int n)
 // =========================
 void palavraMaisCurta(Palavra vetor[], int n)
 {
-    if(n == 0)
+    if(n <= 0)
     {
-        printf("Sem palavras.\n");
+        printf("Mais curta: nenhuma\n");
         return;
     }
 
-    int idx = -1;
-    int menor = 999999;
+    int indice = 0;
 
-    for(int i = 0; i < n; i++)
+    for(int i = 1; i < n; i++)
     {
-        int len = strlen(vetor[i].palavra);
-
-        if(len > 0 && len < menor)
+        if(strlen(vetor[i].palavra) < strlen(vetor[indice].palavra))
         {
-            menor = len;
-            idx = i;
+            indice = i;
         }
     }
 
-    if(idx != -1)
-        printf("Mais curta: %s\n", vetor[idx].palavra);
-    else
-        printf("Mais curta: nao encontrada\n");
+    printf("Mais curta: %s\n", vetor[indice].palavra);
 }
-
 // =========================
 // PLACEHOLDERS (SEM PESQUISAS)
 // =========================
@@ -149,6 +142,29 @@ void palavrasPoucoPesquisadas(Palavra vetor[], int n)
     {
         printf("Nenhuma palavra foi pesquisada apenas 1 vez.\n");
     }
+}
+
+void palavraMenosPesquisada(Palavra vetor[], int n)
+{
+    if(vetor == NULL || n <= 0)
+    {
+        printf("Menos pesquisada: nenhuma\n");
+        return;
+    }
+
+    int indice = 0;
+
+    for(int i = 1; i < n; i++)
+    {
+        if(vetor[i].pesquisas < vetor[indice].pesquisas)
+        {
+            indice = i;
+        }
+    }
+
+    printf("Menos pesquisada: %s (%d pesquisas)\n",
+           vetor[indice].palavra,
+           vetor[indice].pesquisas);
 }
 
 void mediaPesquisas(Palavra vetor[], int n)
@@ -198,50 +214,68 @@ void taxaUtilizacao(Palavra vetor[], int n)
            (float)usadas*100/n);
 }
 
-#include <stdio.h>
-#include <string.h>
-
 void top5Palavras(Palavra vetor[], int n)
 {
-    if(n == 0)
+    if(vetor == NULL || n <= 0)
     {
-        printf("TOP 5: sem dados\n");
+        printf("\nTOP 5: sem dados.\n");
         return;
     }
 
-    // cópia do vetor (não mexe no original)
-    Palavra copia[MAX_PALAVRAS];
+    Palavra *copia = malloc(n * sizeof(Palavra));
+
+    if(copia == NULL)
+    {
+        printf("Erro de memoria.\n");
+        return;
+    }
+
 
     for(int i = 0; i < n; i++)
+    {
         copia[i] = vetor[i];
+    }
 
-    // ordenação simples (Bubble Sort)
+
     for(int i = 0; i < n - 1; i++)
     {
         for(int j = 0; j < n - i - 1; j++)
         {
-            if(copia[j].pesquisas < copia[j + 1].pesquisas)
+            if(copia[j].pesquisas < copia[j+1].pesquisas)
             {
                 Palavra temp = copia[j];
-                copia[j] = copia[j + 1];
-                copia[j + 1] = temp;
+                copia[j] = copia[j+1];
+                copia[j+1] = temp;
             }
         }
     }
 
+
     printf("\nTOP 5 PALAVRAS MAIS PESQUISADAS:\n");
 
-    int limite = (n < 5) ? n : 5;
+    int limite;
+
+    if(n < 5)
+        limite = n;
+    else
+        limite = 5;
+
 
     for(int i = 0; i < limite; i++)
     {
         printf("%dº %s - %d pesquisas\n",
-               i + 1,
+               i+1,
                copia[i].palavra,
                copia[i].pesquisas);
     }
+
+
+    free(copia);
 }
 
+// =========================
+// RELATORIO FINAL
+// =========================
 // =========================
 // RELATORIO FINAL
 // =========================
@@ -251,25 +285,50 @@ void mostrarEstatisticas(Palavra vetor[], int n)
     printf("   RELATORIO ESTATISTICO\n");
     printf("========================\n");
 
+
     printf("Hora: ");
     mostrarHora();
 
-    printf("\n");
+
+    printf("\n----------- GERAL -----------\n");
 
     totalPalavras(vetor, n);
-    totalCategorias(vetor, n);
-   
-
-    palavraMaisLonga(vetor, n);
-    palavraMaisCurta(vetor, n);
 
     totalPesquisas(vetor, n);
+
+
+    printf("\n--------- CATEGORIAS --------\n");
+
+    totalCategorias(vetor, n);
+
+
+    printf("\n--------- PALAVRAS ----------\n");
+
+    palavraMaisLonga(vetor, n);
+
+    palavraMaisCurta(vetor, n);
+
+
+    printf("\n--------- PESQUISAS ---------\n");
+
     palavraMaisPesquisada(vetor, n);
-    palavrasPoucoPesquisadas(vetor, n);
+
     mediaPesquisas(vetor, n);
-    palavrasNuncaPesquisadas(vetor, n);
+
     taxaUtilizacao(vetor, n);
+
+
+    printf("\n------ DESEMPENHO USO -------\n");
+
+    palavrasPoucoPesquisadas(vetor, n);
+
+    palavrasNuncaPesquisadas(vetor, n);
+
+
+    printf("\n----------- TOP 5 -----------\n");
+
     top5Palavras(vetor, n);
+
 
     printf("========================\n");
 }

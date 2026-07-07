@@ -47,5 +47,5 @@ int carregarPalavrasDeArquivo(Trie_Palavras *raiz, Palavra palavras[], const cha
 void liberarTrie(Trie_Palavras *raiz);
 void liberarPalavras(Palavra *palavras, int numPalavras);
 void liberarMemoria(Trie_Palavras *raiz, Palavra *palavras, int numPalavras);
-
+void removerDoVetor(Palavra vetor[], int *n, char palavra[]);
 #endif // PALAVRA_H

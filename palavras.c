@@ -340,16 +340,40 @@ int carregarPalavrasDeArquivo(Trie_Palavras *raiz, Palavra palavras[], const cha
     fclose(arquivo);
     return numPalavras;
 }
+void removerDoVetor(Palavra vetor[], int *n, char palavra[])
+{
+    char palavraBusca[50];
 
-void liberarTrie(Trie_Palavras *raiz) {
-    if (raiz == NULL) {
-        return;
+    strcpy(palavraBusca, palavra);
+    converterParaMinusculas(palavraBusca);
+
+
+    for(int i = 0; i < *n; i++)
+    {
+        char atual[50];
+
+        strcpy(atual, vetor[i].palavra);
+        converterParaMinusculas(atual);
+
+
+        if(strcmp(atual, palavraBusca) == 0)
+        {
+            for(int j = i; j < *n - 1; j++)
+            {
+                vetor[j] = vetor[j + 1];
+            }
+
+            (*n)--;
+
+            printf("Palavra removida do vetor.\n");
+            return;
+        }
     }
-    for (int i = 0; i < 26; i++) {
-        liberarTrie(raiz->filhos[i]);
-    }
-    free(raiz);
+
+
+    printf("Palavra nao encontrada no vetor.\n");
 }
+
 
 void liberarPalavras(Palavra *palavras, int numPalavras) {
 }
