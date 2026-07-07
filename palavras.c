@@ -2,7 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 #include "palavras.h"
+#include <ctype.h>
 #define MAX_PALAVRAS 1000
+#define MAX_RELACIONADA 5
+
+
+int validarPalavra(char palavra[])
+{
+    int tamanho = strlen(palavra);
+
+    if(tamanho == 0)
+        return 0;
+
+    if(tamanho >= 50)
+        return 0;
+
+    for(int i = 0; palavra[i] != '\0'; i++)
+    {
+        if(!isalpha((unsigned char)palavra[i]))
+            return 0;
+    }
+
+    return 1;
+}
 
 Trie_Palavras *criarNo() {
     Trie_Palavras *novoNo = malloc(sizeof(Trie_Palavras));
@@ -32,14 +54,7 @@ void converterParaMinusculas(char *str) {
         }
     }
 }
-void validarPalavra(char *palavra) {
-    for (int i = 0; palavra[i] != '\0'; i++) {
-        if (palavra[i] < 'A' || palavra[i] > 'Z') {
-            printf("Palavra inválida. Use apenas letras maiúsculas.\n");
-            exit(1);
-        }
-    }
-}
+
 Palavra* buscarPalavraPorID(Palavra palavras[], int numPalavras, int id) {
     for (int i = 0; i < numPalavras; i++) {
         if (palavras[i].id == id) {
@@ -53,8 +68,18 @@ void inserirPalavra(Trie_Palavras *raiz, char palavra[], int id) {
     Trie_Palavras *atual = raiz;
     for (int i = 0; palavra[i] != '\0'; i++) {
         int indice = palavra[i] - 'A';
+
+        if (indice < 0 || indice >= 26) {
+            printf("Erro: caractere invalido na palavra '%s'.\n", palavra);
+            return;
+        }
+
         if (atual->filhos[indice] == NULL) {
             atual->filhos[indice] = criarNo();
+            if (atual->filhos[indice] == NULL) {
+                printf("Erro de memoria ao inserir na Trie.\n");
+                return;
+            }
         }
         atual = atual->filhos[indice];
     }
@@ -109,7 +134,8 @@ int pesquisarPalavra(Trie_Palavras *raiz, char palavra[], int *idEncontrado)
 void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) {
     char palavra[50];
 
-    scanf("%s", palavra);
+   scanf("%49s", palavra);
+converterParaMaiusculas(palavra);
 
     int idEncontrado;
     pesquisarPalavra(raiz, palavra, &idEncontrado);
@@ -145,7 +171,7 @@ void consultarPalavra(Palavra palavras[], int numPalavras, Trie_Palavras *raiz) 
 void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalavras) {
     char palavra[50];
     printf("Digite a palavra que deseja atualizar: ");
-    scanf("%s", palavra);
+    scanf("%49s", palavra);
 
     char palavra_maiuscula[50];
     strcpy(palavra_maiuscula, palavra);
@@ -179,23 +205,107 @@ void atualizarDadosPalavra(Trie_Palavras *raiz, Palavra palavras[], int numPalav
     }
 }
 // OPÇÃO 4: Remover Palavra
-void removerPalavra(Trie_Palavras *raiz, char palavra[]) {
-    Trie_Palavras *atual = raiz;
-    for (int i = 0; palavra[i] != '\0'; i++) {
-        int indice = palavra[i] - 'A';
-        if (atual->filhos[indice] == NULL) {
-            printf("Palavra não encontrada. \n Não é possível remover.\n");
-            return;
+void removerPalavra(
+    Trie_Palavras **raiz,
+    Palavra vetor[],
+    int *totalPalavras,
+    char palavra[],
+    const char *nomeArquivo)
+{
+    int id;
+
+    //=========================
+    // 1. Verificar se existe
+    //=========================
+    char chave[50];
+    strcpy(chave, palavra);
+    converterParaMaiusculas(chave);
+
+    if(!pesquisarPalavra(*raiz, chave, &id))
+    {
+        printf("\nPalavra nao encontrada.\n");
+        return;
+    }
+
+    //=========================
+    // 2. Descobrir posição no vetor
+    //=========================
+    int pos = -1;
+
+    for(int i = 0; i < *totalPalavras; i++)
+    {
+        if(vetor[i].id == id)
+        {
+            pos = i;
+            break;
         }
-        atual = atual->filhos[indice];
     }
-    if (atual->fimPalavra) {
-        atual->fimPalavra = 0;
-        printf("Palavra  %s removida com sucesso.\n", palavra);
-    } else {
-        printf("Palavra %s não encontrada. Não é possível remover.\n", palavra);
+
+    if(pos == -1)
+    {
+        printf("\nErro interno.\n");
+        return;
     }
+
+    //=========================
+    // 3. Remover do vetor
+    //=========================
+    for(int i = pos; i < *totalPalavras - 1; i++)
+    {
+        vetor[i] = vetor[i + 1];
+    }
+
+    (*totalPalavras)--;
+
+    //=========================
+    // 4. Atualizar IDs
+    //=========================
+    for(int i = 0; i < *totalPalavras; i++)
+    {
+        vetor[i].id = i + 1;
+    }
+
+    //=========================
+    // 5. Limpar completamente a Trie
+    //=========================
+liberarTrie(*raiz);
+
+    //=========================
+    // 6. Criar uma Trie vazia
+    //=========================
+   *raiz = criarNo();
+   if(*raiz == NULL)
+{
+    printf("Erro ao reconstruir a Trie.\n");
+    return;
 }
+
+    //=========================
+    // 7. Inserir novamente todas as palavras
+    //=========================
+    for(int i = 0; i < *totalPalavras; i++)
+    {
+        char aux[50];
+
+        strcpy(aux, vetor[i].palavra);
+        converterParaMaiusculas(aux);
+
+        inserirPalavra(*raiz, aux, vetor[i].id);
+    }
+
+    //=========================
+    // 8. Atualizar o ficheiro
+    //=========================
+    guardarPalavrasEmArquivo(vetor,
+                             *totalPalavras,
+                             nomeArquivo);
+
+    //=========================
+    // 9. Mensagem
+    //=========================
+    printf("\nPalavra removida com sucesso.\n");
+}
+
 // OPÇÃO 5: Listar Palavras
 void listarPalavras(Trie_Palavras *raiz, char prefixo[], int nivel) {
     if (raiz == NULL) {
@@ -208,6 +318,7 @@ void listarPalavras(Trie_Palavras *raiz, char prefixo[], int nivel) {
     for (int i = 0; i < 26; i++) {
         if (raiz->filhos[i] != NULL) {
             prefixo[nivel] = 'A' + i;
+            prefixo[nivel + 1] = '\0';
             listarPalavras(raiz->filhos[i], prefixo, nivel + 1);
         }
     }
@@ -223,6 +334,7 @@ void listarSubArvore(Trie_Palavras *no, char prefixo[], int nivel) {
     
     for (int i = 0; i < 26; i++) {
         if (no->filhos[i] != NULL) {
+            prefixo[nivel+1]='\0';
             prefixo[nivel] = 'A' + i;
             listarSubArvore(no->filhos[i], prefixo, nivel + 1);
         }
@@ -235,6 +347,11 @@ void sugerirPalavrasPorPrefixo(Trie_Palavras *raiz, char prefixo[]) {
     int i;
     
     for (i = 0; prefixo[i] != '\0'; i++) {
+        if(prefixo[i] < 'A' || prefixo[i] > 'Z')
+{
+    printf("Prefixo invalido.\n");
+    return;
+}
         int indice = prefixo[i] - 'A';
         if (atual->filhos[indice] == NULL) {
             printf("\nNao foram encontradas sugestoes para o prefixo '%s'.\n", prefixo);
@@ -287,11 +404,13 @@ int contarPalavras(Trie_Palavras *raiz) {
 
 
 int carregarPalavrasDeArquivo(Trie_Palavras *raiz, Palavra palavras[], const char *PalavrasArquivos) {
-    FILE *arquivo = fopen(PalavrasArquivos, "r");
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo para leitura.\n");
-        return 0;
-    }
+   FILE *arquivo = fopen(PalavrasArquivos, "r");
+
+if(arquivo == NULL)
+{
+    printf("Arquivo inexistente.\n");
+    return 0;
+}
     int numPalavras = 0;
     char linha[1200]; 
 
@@ -299,17 +418,18 @@ int carregarPalavrasDeArquivo(Trie_Palavras *raiz, Palavra palavras[], const cha
         linha[strcspn(linha, "\n")] = '\0';
 
         Palavra p;
+        p.pesquisas = 0;
         p.numero_de_relacionadas = 0;
         char rel_brutas[500] = "";
 
-        int campos_lidos = sscanf(linha, "%d|%[^|]|%[^|]|%[^|]|%[^|]|%[^\0]", &p.id, p.palavra, p.significado, p.contexto, p.categoria, rel_brutas);
+        int campos_lidos = sscanf(linha, "%d|%49[^|]|%499[^|]|%499[^|]|%49[^|]|%499[^\n]", &p.id, p.palavra, p.significado, p.contexto, p.categoria, rel_brutas);
 
         if (campos_lidos >= 5) {
             int idx = 0;
             int palavra_relacionadaAtual = 0; 
             int indece_doCaractereNaPalavra = 0; 
 
-            while (rel_brutas[idx] != '\0' && palavra_relacionadaAtual < 10) {
+            while (rel_brutas[idx] != '\0' && palavra_relacionadaAtual < MAX_RELACIONADA) {
                 if (rel_brutas[idx] == ',') {
                     p.relacionadas[palavra_relacionadaAtual][indece_doCaractereNaPalavra] = '\0';
                     palavra_relacionadaAtual++; 
@@ -329,7 +449,7 @@ int carregarPalavrasDeArquivo(Trie_Palavras *raiz, Palavra palavras[], const cha
             palavras[numPalavras] = p;
 
             char chave_trie[50];
-            strncpy(chave_trie, p.palavra, 50);
+         strcpy(chave_trie, p.palavra);
             converterParaMaiusculas(chave_trie);
             
             inserirPalavra(raiz, chave_trie, p.id);
@@ -351,7 +471,10 @@ void liberarTrie(Trie_Palavras *raiz) {
     free(raiz);
 }
 
-void liberarPalavras(Palavra *palavras, int numPalavras) {
+void liberarPalavras(Palavra *palavras, int numPalavras)
+{
+    (void)palavras;
+    (void)numPalavras;
 }
 void liberarMemoria(Trie_Palavras *raiz, Palavra *palavras, int numPalavras) {
     liberarTrie(raiz);

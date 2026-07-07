@@ -9,6 +9,7 @@
 #include "palavras.h"
 
 #define MAX_PALAVRAS 1000
+#define MAX_RELACIONADA 5
 #define NOME_ARQUIVO "PalavrasArquivos.txt"
 void lerString(char *buffer, int tamanho)
 {
@@ -16,6 +17,11 @@ void lerString(char *buffer, int tamanho)
     buffer[strcspn(buffer, "\n")] = '\0';
 }
 
+void pausar(){
+    printf("\n");
+    printf("Pressione ENTER para continuar...");
+    getchar();
+}
 int main() {
     // 1. Inicialização das estruturas de dados
     Trie_Palavras *raiz = criarNo();
@@ -37,6 +43,7 @@ int main() {
     int idAuxiliar;
 
     do {
+        
         printf("\n===== Dicionario Digital =====\n");
         printf("1. Inserir Palavra\n");
         printf("2. Procurar/Consultar Palavra\n");
@@ -73,6 +80,7 @@ int main() {
                 nova.pesquisas = 0;
                 printf("Palavra: ");
                 scanf("%49s", nova.palavra);
+                
                 while (getchar() != '\n');
 
                 // Criar uma cópia em maiúsculas para indexar na Trie com segurança
@@ -92,9 +100,14 @@ int main() {
                 }
 
                 // 3. Ler o Significado (permite espaços)
-                printf("Significado: ");
-                fgets(nova.significado, sizeof(nova.significado), stdin);
-                nova.significado[strcspn(nova.significado, "\n")] = '\0'; 
+               printf("Significado: ");
+                fgets(nova.significado,sizeof(nova.significado),stdin);
+                nova.significado[strcspn(nova.significado,"\n")]='\0';
+
+                if(strlen(nova.significado)==0){
+                    printf("Significado obrigatorio.\n");
+                    break;
+                }
 
                 // 4. Ler o Contexto (permite espaços)
                 printf("Contexto: ");
@@ -106,6 +119,10 @@ int main() {
                 fgets(nova.categoria, sizeof(nova.categoria), stdin);
                 nova.categoria[strcspn(nova.categoria, "\n")] = '\0';
 
+                if(strlen(nova.categoria) == 0) {
+                    printf("Categoria obrigatoria.\n");
+                    break;
+                }
                 // 6. Ler Palavras Relacionadas (Opcional - Lê até o utilizador digitar Enter vazio)
                 printf("\nPalavras Relacionadas (Pressione Enter vazio para terminar):\n");
                 while (nova.numero_de_relacionadas < 5) {
@@ -132,26 +149,39 @@ int main() {
 
             case 2:
                 printf("Digite a palavra que deseja consultar:\n");
-                printf("Ligue o CAPS LOCK para Pesquisa: \n");
-                //scanf(" %49s", buffer_palavra);
-                consultarPalavra(dicionario, totalPalavras, raiz);
-                break;
+                consultarPalavra(dicionario,totalPalavras,raiz);
+//printf("Digite a palavra: ");
+//scanf("%49s", palavra);
+                
+break;
 
             case 3:
                 atualizarDadosPalavra(raiz, dicionario, totalPalavras);
+                pausar();     
                 break;
 
             case 4:
-                printf("Digite a palavra a remover: ");
-                scanf("%s", buffer_palavra);
-                while (getchar() != '\n');
-                converterParaMaiusculas(buffer_palavra);
-                removerPalavra(raiz, buffer_palavra);
-                break;
+                    printf("Digite a palavra a remover: ");
+                    scanf("%49s", buffer_palavra);
+                    while(getchar()!='\n');
+                  removerPalavra(
+    &raiz,
+    dicionario,
+    &totalPalavras,
+    buffer_palavra,
+    NOME_ARQUIVO
+);
+
+                        pausar();
+                                            
+                        break;
 
             case 5:
                 printf("\n--- Listagem de Palavras ---\n");
                 listarPalavras(raiz, prefixoBuffer, 0);
+                
+                
+                pausar();
                 break;
 
             case 6:
@@ -161,16 +191,27 @@ int main() {
                 converterParaMaiusculas(buffer_palavra);
                 // Nota: Garante que implementas esta funcao 'sugerirPalavrasPorPrefixo' no teu .c
                 sugerirPalavrasPorPrefixo(raiz, buffer_palavra);
+                
+                
+                pausar();
+      
                 break;
 
             case 7:
                 printf("A guardar dados em '%s'...\n", NOME_ARQUIVO);
                 guardarPalavrasEmArquivo(dicionario, totalPalavras, NOME_ARQUIVO);
                 printf("Dados gravados com sucesso!\n");
-                break;
+                
+                
+                pausar();
+                                break;
 
             case 8:
                 mostrarEstatisticas(dicionario, totalPalavras);
+                printf("\nPressione ENTER para voltar ao menu...");
+                pausar();
+                
+                    
                 break;
 
             case 0:

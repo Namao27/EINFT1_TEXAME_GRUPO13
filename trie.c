@@ -135,10 +135,10 @@ void pesquisarPrefixo(char prefixo[]) {
 }
 
 // Liberta toda a memória da Trie
-void liberarTrie(NoTrie *no) {
+/*void liberarTrie(NoTrie *no) {
     if (no == NULL) return;
     for (int i = 0; i < ALFABETO; i++) {
         liberarTrie(no->filhos[i]);
     }
     free(no);
-}
+}*/

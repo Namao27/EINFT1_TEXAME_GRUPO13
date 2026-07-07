@@ -4,7 +4,7 @@
 
 
 int compararPalavra(const char *a, const char *b){
-return _stricmp(a,b);
+return strcmp(a,b);
 
 }
 

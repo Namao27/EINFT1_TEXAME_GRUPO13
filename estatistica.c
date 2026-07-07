@@ -2,6 +2,8 @@
 #include <time.h>
 #include <string.h>
 #include "estatistica.h"
+#include <stdio.h>
+#include <string.h>
 
 // =========================
 // HORA DO SISTEMA
@@ -58,9 +60,9 @@ void totalCategorias(Palavra vetor[], int n)
     }
 
     printf("\nCategorias:\n");
-    printf("Programacao: %d\n", prog);
-    printf("Matematica : %d\n", mat);
-    printf("Redes      : %d\n", red);
+    printf("Programacao : %d\n", prog);
+    printf("Matematica  : %d\n", mat);
+    printf("Redes       : %d\n", red);
     printf("Outros      : %d\n", outros);
 }
 
@@ -69,15 +71,30 @@ void totalCategorias(Palavra vetor[], int n)
 // =========================
 void palavraMaisLonga(Palavra vetor[], int n)
 {
-    if(n == 0) return;
+    if(n == 0)
+    {
+        printf("Sem palavras.\n");
+        return;
+    }
 
-    int idx = 0;
+    int idx = -1;
+    int maior = -1;
 
-    for(int i = 1; i < n; i++)
-        if(strlen(vetor[i].palavra) > strlen(vetor[idx].palavra))
+    for(int i = 0; i < n; i++)
+    {
+        int len = strlen(vetor[i].palavra);
+
+        if(len > maior)
+        {
+            maior = len;
             idx = i;
+        }
+    }
 
-    printf("Mais longa: %s\n", vetor[idx].palavra);
+    if(idx != -1)
+        printf("Mais longa: %s\n", vetor[idx].palavra);
+    else
+        printf("Mais longa: nao encontrada\n");
 }
 
 // =========================
@@ -116,18 +133,21 @@ void palavraMaisCurta(Palavra vetor[], int n)
 // =========================
 void palavraMaisPesquisada(Palavra vetor[], int n)
 {
-    if(n==0)
+    if(n == 0)
+    {
+        printf("Mais pesquisada: sem dados\n");
         return;
+    }
 
-    int maior=0;
+    int idx = 0;
 
-    for(int i=1;i<n;i++)
-        if(vetor[i].pesquisas > vetor[maior].pesquisas)
-            maior=i;
+    for(int i = 1; i < n; i++)
+        if(vetor[i].pesquisas > vetor[idx].pesquisas)
+            idx = i;
 
     printf("Mais pesquisada: %s (%d pesquisas)\n",
-           vetor[maior].palavra,
-           vetor[maior].pesquisas);
+           vetor[idx].palavra,
+           vetor[idx].pesquisas);
 }
 
 void palavrasPoucoPesquisadas(Palavra vetor[], int n)
@@ -198,13 +218,10 @@ void taxaUtilizacao(Palavra vetor[], int n)
            (float)usadas*100/n);
 }
 
-#include <stdio.h>
-#include <string.h>
 
-void top5Palavras(Palavra vetor[], int n)
-{
-    if(n == 0)
-    {
+void top5Palavras(Palavra vetor[], int n){
+    
+    if(n == 0){
         printf("TOP 5: sem dados\n");
         return;
     }
@@ -245,31 +262,20 @@ void top5Palavras(Palavra vetor[], int n)
 // =========================
 // RELATORIO FINAL
 // =========================
+
 void mostrarEstatisticas(Palavra vetor[], int n)
 {
-    printf("\n========================\n");
-    printf("   RELATORIO ESTATISTICO\n");
-    printf("========================\n");
-
-    printf("Hora: ");
+    printf("\n=== ESTATISTICAS ===\n");
     mostrarHora();
-
-    printf("\n");
-
     totalPalavras(vetor, n);
+    totalPesquisas(vetor, n);
     totalCategorias(vetor, n);
-   
-
     palavraMaisLonga(vetor, n);
     palavraMaisCurta(vetor, n);
-
-    totalPesquisas(vetor, n);
     palavraMaisPesquisada(vetor, n);
     palavrasPoucoPesquisadas(vetor, n);
     mediaPesquisas(vetor, n);
+    top5Palavras(vetor, n);
     palavrasNuncaPesquisadas(vetor, n);
     taxaUtilizacao(vetor, n);
-    top5Palavras(vetor, n);
-
-    printf("========================\n");
 }

@@ -1,4 +1,3 @@
-91|a|a|a|a|
 1|algoritmo|Sequencia finita de passos logicos e bem definidos para resolver um problema.|Utilizado amplamente no desenvolvimento de software e automacao de processos.|Informatica|
 2|ponteiro|Variavel que armazena o endereco de memoria de outra variavel.|Muito utilizado em C para alocacao dinamica de memoria e manipulacao de arrays.|Informatica|
 3|recursividade|Metodo de programacao no qual uma funcao chama a si mesma para resolver subproblemas.|Aplicado em algoritmos de busca, ordenacao e manipulacao de estruturas em arvore.|Informatica|
@@ -41,7 +40,7 @@
 40|gateway|Dispositivo que estabelece a ligacao e comunicacao entre duas redes diferentes.|O router da operadora serve como gateway para a internet da casa.|Informatica|
 41|geladeira|Eletrodomestico que serve para conservar alimentos a baixas temperaturas.|Coloquei os sumos e as frutas na geladeira para ficarem frescos.|Quotidiano|
 42|hd|Dispositivo de armazenamento magnetico nao volatil usado em computadores.|Substitui o meu antigo HD por um SSD para o sistema iniciar mais rapido.|Informatica|
-43|html|Linguagem de marcacao utilizada para estruturar os blocos de uma pagina web.|O programador usou HTML para criar a estrutura basica do site.|Informatica|
+43|html|Linguagem de marcacao utilizada para estruturar os blocos de uma pagina web.|Programaá∆o|Informatica|
 44|hotel|Estabelecimento que oferece alojamento e refeicoes a viajantes e turistas.|Ficamos hospedados num hotel muito confortavel perto da praia.|Quotidiano|
 45|ide|Ambiente de desenvolvimento integrado que reune ferramentas para programar.|Uso o VS Code como IDE principal para escrever os programas em C.|Informatica|
 46|impressora|Periferico que verte textos ou imagens do computador para o papel.|Preciso de ligar a impressora para imprimir o relatorio do projeto.|Informatica|
@@ -78,7 +77,7 @@
 77|string|Cadeia de caracteres que representa texto numa linguagem de programacao.|A struct guarda a palavra e o significado em vetores do tipo string.|Informatica|
 78|teclado|Periferico de entrada composto por teclas usado para digitar texto.|O teclado do meu computador tem o layout em portugues.|Informatica|
 79|telefone|Aparelho eletronico usado para transmitir som e voz a longa distancia.|O telefone da secretaria esteve a tocar durante toda a manha.|Quotidiano|
-71|televisao|Aparelho eletronico com ecra que recebe e exibe sinais de video e audio.|Gostamos de ver o telejornal na televisao da sala de jantar.|Quotidiano|
+80|televisao|Aparelho eletronico com ecra que recebe e exibe sinais de video e audio.|Gostamos de ver o telejornal na televisao da sala de jantar.|Quotidiano|
 81|url|Endereco virtual exclusivo que indica a localizacao de uma pagina web.|Copia o URL do site e envia por mensagem para o grupo.|Informatica|
 82|utilizador|Pessoa que interage e utiliza um sistema informatico ou aplicacao.|O sistema valida se o utilizador introduziu uma senha valida.|Informatica|
 83|uva|Fruto da videira de formato arredondado usado para produzir vinho.|Comprei um cacho de uvas doces no mercado esta semana.|Quotidiano|
@@ -89,13 +88,18 @@
 88|while|Estrutura de repeticao baseada numa condicao testada no inicio do bloco.|O loop while continua a ler enquanto existirem linhas no ficheiro.|Informatica|
 89|wifi|Tecnologia de rede sem fios que permite a conexao de dispositivos.|O sinal de wifi na sala de aulas esta muito fraco hoje.|Quotidiano|
 90|xml|Linguagem de marcacao extensivel usada para estruturar e transportar dados|O ficheiro xml continha a configuracao inicial da aplicacao.|Informatica|
-92|BASE|Sistema organizado para armazenar e gerir informacoes.|Apps, sites, redes sociais.|Armazenamento|
-93|COMPILAR|Programa que traduz codigo fonte para linguagem maquina.|c, c++, java|Ferramenta de programacao|
-94|SOFTWARE|Programas e sistemas que rodam no hardware.|Parte logica do sistema.|Informatica |
-95|REDES|Comunicaá∆o entre dispositivos.|Troca de dados entre m†quinas.|Informatica|
-96|ARRAY|Estrutura que guarda v†rios valores do mesmo tipo.|lista de notas, idades, sensores, etc.|Programaá∆o|
-97|BUG|Erro ou falha no c¢digo.|quando o programa n∆o faz o que tu queres, tens um bug.|Programaá∆o|
-98|ERRO|Aá∆o ou resultado incorreto no c¢digo ou no sistema.|acontece quando o programa tenta fazer algo imposs°vel ou mal escrito|Execuá∆o|
-100|FALHA|quando um sistema ou parte dele n∆o funciona como esperado|pode ser mais "grave" que um erro, tipo um sistema que deixa de responder.|Sistema|
-101|DEFEITO|Imperfeiá∆o ou problema presente no c¢digo ou no sistema desde a origem|muitas vezes vem do desenvolvimento (c¢digo mal feito ou l¢gica errada).|Desenvolvimento|
-101|INTEROPERABILIDADE|Capacidade de diferentes sistemas, programas ou componentes conseguirem comunicar e trabalhar entre si.|APIs, redes, cloud|Programacao|
+91|BASE|Sistema organizado para armazenar e gerir informacoes.|Apps, sites, redes sociais.|Armazenamento|
+92|COMPILAR|Programa que traduz codigo fonte para linguagem maquina.|c, c++, java|Ferramenta de programacao|
+93|SOFTWARE|Programas e sistemas que rodam no hardware.|Parte logica do sistema.|Informatica |
+94|REDES|Comunicaá∆o entre dispositivos.|Troca de dados entre m†quinas.|Informatica|
+95|ARRAY|Estrutura que guarda v†rios valores do mesmo tipo.|lista de notas, idades, sensores, etc.|Programaá∆o|
+96|BUG|Erro ou falha no c¢digo.|quando o programa n∆o faz o que tu queres, tens um bug.|Programaá∆o|
+97|ERRO|Aá∆o ou resultado incorreto no c¢digo ou no sistema.|acontece quando o programa tenta fazer algo imposs°vel ou mal escrito|Execuá∆o|
+98|FALHA|quando um sistema ou parte dele n∆o funciona como esperado|pode ser mais "grave" que um erro, tipo um sistema que deixa de responder.|Sistema|
+99|DEFEITO|Imperfeiá∆o ou problema presente no c¢digo ou no sistema desde a origem|muitas vezes vem do desenvolvimento (c¢digo mal feito ou l¢gica errada).|Desenvolvimento|
+100|INTEROPERABILIDADE|Capacidade de diferentes sistemas, programas ou componentes conseguirem comunicar e trabalhar entre si.|APIs, redes, cloud|Programacao|
+101|Ed|ed|ed|ed|d,s,a,s,d
+102|asas|asas|Redes|Redes|a,a,a,a,a
+103|g|g|g|g|a,s,d,f,d
+104|Dorivaldo|Nome|Tecnologia|Inform†tica|Html,grafo,xml,http,uva
+105|Pao|Linguagem|Htlk|pao|Dorivaldo,Html,css,c,ponteiro
